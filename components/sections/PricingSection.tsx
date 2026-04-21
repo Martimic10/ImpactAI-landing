@@ -1,18 +1,25 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Check } from "lucide-react";
+import { Check, Zap } from "lucide-react";
 import Link from "next/link";
 
+// Payment provider hook-in points:
+// - ctaHref: swap "#download" for a Stripe Checkout URL or RevenueCat paywall deep-link
+// - priceId: Stripe price ID to pass to your checkout handler
+// - type: "free" | "subscription" | "lifetime" — lets your handler route correctly
 const plans = [
   {
+    type: "free" as const,
     name: "Free",
     price: "$0",
     period: "forever",
     description: "Everything you need to get started.",
     cta: "Download Free",
     ctaHref: "#download",
+    priceId: null,
     highlight: false,
+    badge: null,
     features: [
       "5 swing analyses per month",
       "Slow motion playback",
@@ -23,13 +30,15 @@ const plans = [
     ],
   },
   {
+    type: "subscription" as const,
     name: "Pro",
     price: "$8",
     period: "per month",
     description: "Unlimited access. Serious improvement.",
-    cta: "Start Pro Free",
+    cta: "Start Pro Monthly",
     ctaHref: "#download",
-    highlight: true,
+    priceId: null, // e.g. "price_pro_monthly"
+    highlight: false,
     badge: "Most Popular",
     features: [
       "Unlimited swing analyses",
@@ -40,6 +49,26 @@ const plans = [
       "Friends leaderboard",
       "Impact frame deep analysis",
       "Priority AI coaching insights",
+    ],
+  },
+  {
+    type: "lifetime" as const,
+    name: "Lifetime Access",
+    price: "$59",
+    period: "one-time",
+    description: "Get full access to ImpactAI without a subscription.",
+    cta: "Get Lifetime Access",
+    ctaHref: "#download",
+    priceId: null, // e.g. "price_lifetime_001"
+    highlight: true,
+    badge: "Best Value",
+    features: [
+      "Unlimited swing analyses",
+      "Full visual analysis tools",
+      "Auto lesson recommendations",
+      "Progress tracking",
+      "Friends leaderboard features",
+      "All future updates included",
     ],
   },
 ];
@@ -63,8 +92,8 @@ export default function PricingSection() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {/* Cards — 3-col on large, stacked on mobile */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -74,16 +103,33 @@ export default function PricingSection() {
                   : "bg-white border border-[#E5E7EB] shadow-lg hover:shadow-xl"
               }`}
             >
+              {/* Badge */}
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-white text-[#2E7D32] text-xs font-bold px-4 py-1.5 rounded-full shadow-md border border-[#A5D6A7]">
-                    {plan.badge}
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                  {plan.highlight ? (
+                    <span className="inline-flex items-center gap-1 bg-amber-400 text-amber-900 text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
+                      <Zap size={11} strokeWidth={3} />
+                      {plan.badge}
+                    </span>
+                  ) : (
+                    <span className="bg-white text-[#2E7D32] text-xs font-bold px-4 py-1.5 rounded-full shadow-md border border-[#A5D6A7]">
+                      {plan.badge}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Limited time label */}
+              {plan.type === "lifetime" && (
+                <div className="mb-4 mt-1">
+                  <span className="text-[10px] font-bold uppercase tracking-widest bg-white/20 text-white/90 border border-white/30 px-2.5 py-1 rounded-full">
+                    Limited Time Offer
                   </span>
                 </div>
               )}
 
               {/* Plan name & price */}
-              <div className="mb-6">
+              <div className={`mb-6 ${plan.type !== "lifetime" ? "mt-1" : ""}`}>
                 <h3
                   className={`text-sm font-bold uppercase tracking-widest mb-3 ${
                     plan.highlight ? "text-[#A5D6A7]" : "text-[#2E7D32]"
@@ -104,7 +150,7 @@ export default function PricingSection() {
                       plan.highlight ? "text-white/70" : "text-[#6B7280]"
                     }`}
                   >
-                    /{plan.period}
+                    {plan.type === "lifetime" ? " one-time" : `/${plan.period}`}
                   </span>
                 </div>
                 <p
@@ -147,6 +193,10 @@ export default function PricingSection() {
               {/* CTA */}
               <Link
                 href={plan.ctaHref}
+                // data-price-id and data-plan-type make it easy to wire up Stripe/RevenueCat:
+                // onClick: (e) => { e.preventDefault(); openCheckout(plan.priceId, plan.type) }
+                data-price-id={plan.priceId ?? undefined}
+                data-plan-type={plan.type}
                 className={`w-full py-3.5 rounded-2xl text-sm font-bold text-center transition-all duration-200 block ${
                   plan.highlight
                     ? "bg-white text-[#2E7D32] hover:bg-[#E8F5E9] shadow-lg"
