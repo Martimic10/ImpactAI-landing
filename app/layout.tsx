@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     description:
       "Improve your golf swing with AI. Record your swing, get instant feedback, visual analysis, drills, and progress tracking with ImpactAI.",
   },
+  icons: {
+    icon: "/ImpactAI-logo-removebg-preview.png",
+    apple: "/ImpactAI-logo-removebg-preview.png",
+  },
   robots: {
     index: true,
     follow: true,
