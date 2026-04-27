@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import AppStoreButtons from "@/components/AppStoreButtons";
-import PhoneMockup from "@/components/PhoneMockup";
-import AnalyzeScreen from "@/components/screens/AnalyzeScreen";
-import ResultsScreen from "@/components/screens/ResultsScreen";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
@@ -102,17 +100,35 @@ export default function HeroSection() {
           </div>
 
           {/* Phone mockups */}
-          <div className="relative flex justify-center lg:justify-end items-center h-[480px] lg:h-[560px]">
-            {/* Back phone */}
-            <div className="absolute right-8 lg:right-0 top-4 opacity-80 pointer-events-none">
-              <PhoneMockup screen={<ResultsScreen />} tilt="right" />
+          <div className="relative flex justify-center lg:justify-end items-end h-[480px] sm:h-[560px] lg:h-[620px]">
+
+            {/* Green glow */}
+            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#66BB6A]/15 rounded-full blur-3xl pointer-events-none z-0" />
+
+            {/* Results — back, offset right, tilted */}
+            <div className="absolute bottom-4 right-0 sm:right-4 lg:right-0 z-0 rotate-6 origin-bottom pointer-events-none">
+              <Image
+                src="/results-screen-removebg-preview.png"
+                alt="Results screen"
+                width={220}
+                height={475}
+                className="w-[170px] sm:w-[210px] lg:w-[230px] h-auto opacity-85 drop-shadow-xl"
+                priority
+              />
             </div>
-            {/* Front phone */}
-            <div className="relative z-10 -left-4 lg:-left-8 shadow-2xl">
-              <PhoneMockup screen={<AnalyzeScreen />} tilt="none" />
+
+            {/* Analyze — front */}
+            <div className="relative z-10 -translate-x-6 sm:-translate-x-10 pointer-events-none">
+              <Image
+                src="/Analyze-screen-removebg-preview.png"
+                alt="Analyze screen"
+                width={270}
+                height={583}
+                className="w-[210px] sm:w-[255px] lg:w-[285px] h-auto drop-shadow-2xl"
+                priority
+              />
             </div>
-            {/* Glow */}
-            <div className="absolute inset-0 bg-gradient-radial from-[#66BB6A]/10 to-transparent pointer-events-none" />
+
           </div>
         </div>
       </div>
