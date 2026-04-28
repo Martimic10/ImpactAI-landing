@@ -12,37 +12,37 @@ const faqs = [
   {
     question: "How does ImpactAI analyze my golf swing?",
     answer:
-      "ImpactAI uses computer vision and machine learning to analyze your swing video frame-by-frame. It evaluates over 20 swing metrics including club path, face angle, swing plane, hip rotation, tempo, and impact position. The AI then compares your swing against ideal biomechanical models and surfaces the most impactful areas to improve.",
+      "ImpactAI uses AI-powered motion analysis to break down your swing frame-by-frame. It evaluates your setup, posture, swing path, tempo, balance, and contact to give you clear, actionable feedback—just like a real coach.",
   },
   {
-    question: "Is ImpactAI for beginners or advanced golfers?",
+    question: "What do I need to record a good swing?",
     answer:
-      "Both. ImpactAI adapts its feedback and drill recommendations to your skill level. Beginners get simplified, actionable feedback with foundational drills. Intermediate and advanced golfers get deeper metric breakdowns and targeted refinements. You can also set your level in the app.",
+      "All you need is your phone. For best results, record your full body and club from either a down-the-line or face-on angle with good lighting. No special equipment is required.",
   },
   {
-    question: "Can I use it for my driver, irons, and short game?",
+    question: "How accurate is the analysis?",
     answer:
-      "Yes. ImpactAI analyzes swings for all club types — driver, woods, irons, wedges, and even putting mechanics. Each club type has specific benchmarks and drill recommendations tailored to that club's requirements.",
+      "ImpactAI is designed to give realistic, coach-style feedback based on what's visible in your swing. While it's not a replacement for in-person coaching, it provides highly useful insights to help you improve faster and more consistently.",
   },
   {
-    question: "Does ImpactAI replace a real golf coach?",
+    question: "Can I use any club?",
     answer:
-      "ImpactAI is a powerful complement to coaching — not a replacement. It gives you instant, data-driven feedback between lessons so you can practice with purpose. Many golfers use it to apply their coach's advice more effectively and track whether changes are actually showing up in their swing.",
+      "Yes. You can select from driver, woods, irons, and wedges, and ImpactAI adjusts its analysis based on the club you're using to give more relevant feedback.",
   },
   {
-    question: "Is ImpactAI available on iPhone and Android?",
+    question: "Can I track my progress over time?",
     answer:
-      "ImpactAI is launching on both iOS and Android. The app is currently in development and preparing for release. Join the waitlist to be notified first and get early access.",
+      "Yes. Every swing is saved so you can review past sessions, compare swings, and see how your scores and mechanics improve over time.",
   },
   {
-    question: "What do I get with the Pro plan?",
+    question: "Can I compare my swings?",
     answer:
-      "Pro gives you unlimited swing analyses (vs. 5/month on Free), advanced visual overlays with ghosted ideal swing paths, the full lesson library with 50+ drills, complete progress tracking history, friends leaderboard, and deep impact frame analysis. At $8/month, it's less than the cost of a single range lesson.",
+      "Yes. You can compare your current swing to previous ones to see what's improved, what's changed, and what still needs work—all side-by-side.",
   },
   {
-    question: "How accurate is the AI analysis?",
+    question: "Do I need a subscription to use ImpactAI?",
     answer:
-      "ImpactAI's analysis is built on validated biomechanical data and has been tested against professional swing coaches. While it's not a substitute for in-person coaching, it consistently identifies the same high-priority faults that certified instructors flag. Accuracy improves the better the video quality and angle.",
+      "You can start with a limited free version. The Pro plan unlocks unlimited analyses, advanced feedback, and additional features designed to help you improve faster.",
   },
 ];
 

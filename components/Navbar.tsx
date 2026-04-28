@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -13,36 +13,16 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
-      {/* ── Desktop ── */}
-      <div
-        className={`fixed z-50 hidden md:flex transition-all duration-500 ease-out ${
-          scrolled
-            ? "top-4 left-1/2 -translate-x-1/2"
-            : "top-0 left-0 right-0"
-        }`}
-      >
-        <div
-          className={`flex items-center transition-all duration-500 ease-out ${
-            scrolled
-              ? // Floating pill
-                "w-auto gap-6 bg-white/90 backdrop-blur-xl border border-[#E5E7EB] shadow-xl rounded-2xl px-5 py-2.5"
-              : // Full-width bar
-                "w-screen max-w-7xl mx-auto px-8 py-5 gap-0"
-          }`}
-        >
-          {/* Left — Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
+      {/* ── Desktop ── always floating pill */}
+      <div className="fixed top-4 left-6 right-6 z-50 hidden md:flex">
+        <div className="w-full flex items-center justify-between bg-white/95 backdrop-blur-xl border border-[#E5E7EB] shadow-lg rounded-2xl px-6 py-3">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
             <Image
               src="/ImpactAI-logo-removebg-preview.png"
               alt="ImpactAI"
@@ -56,11 +36,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center — Nav links */}
-          <nav
-            className={`flex items-center gap-7 ${
-              scrolled ? "ml-6" : "flex-1 justify-center"
-            }`}
-          >
+          <nav className="flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -72,31 +48,19 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right — CTA */}
+          {/* CTA */}
           <Link
             href="#download"
-            className={`gradient-green text-white text-sm font-semibold rounded-xl px-5 py-2.5 shadow-md hover:opacity-90 hover:shadow-lg transition-all whitespace-nowrap shrink-0 ${
-              scrolled ? "ml-6" : ""
-            }`}
+            className="gradient-green text-white text-sm font-semibold rounded-xl px-6 py-2.5 shadow-md hover:opacity-90 hover:shadow-lg transition-all whitespace-nowrap shrink-0"
           >
             Download Free
           </Link>
         </div>
       </div>
 
-      {/* ── Mobile nav bar ── */}
-      <div
-        className={`fixed z-50 flex md:hidden transition-all duration-500 ease-out ${
-          scrolled ? "top-4 left-4 right-4" : "top-0 left-0 right-0"
-        }`}
-      >
-        <div
-          className={`w-full flex items-center justify-between transition-all duration-500 ease-out ${
-            scrolled
-              ? "bg-white/90 backdrop-blur-xl border border-[#E5E7EB] shadow-xl rounded-2xl px-4 py-2.5"
-              : "px-5 py-4"
-          }`}
-        >
+      {/* ── Mobile ── always floating pill */}
+      <div className="fixed top-4 left-4 right-4 z-50 flex md:hidden">
+        <div className="w-full flex items-center justify-between bg-white/95 backdrop-blur-xl border border-[#E5E7EB] shadow-lg rounded-2xl px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/ImpactAI-logo-removebg-preview.png"
@@ -112,11 +76,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`p-2 rounded-xl transition-colors ${
-              scrolled
-                ? "text-[#374151] hover:bg-[#F3F4F6]"
-                : "text-[#374151] hover:bg-black/5"
-            }`}
+            className="p-2 rounded-xl text-[#374151] hover:bg-[#F3F4F6] transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -124,11 +84,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ── Mobile dropdown — separate from pill so it doesn't resize it ── */}
+      {/* ── Mobile dropdown ── */}
       <div
-        className={`fixed z-40 md:hidden transition-all duration-300 ease-out ${
-          scrolled ? "left-4 right-4 top-[72px]" : "left-3 right-3 top-[68px]"
-        } ${
+        className={`fixed z-40 left-4 right-4 top-[72px] md:hidden transition-all duration-300 ease-out ${
           mobileOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
