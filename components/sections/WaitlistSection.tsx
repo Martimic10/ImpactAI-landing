@@ -13,7 +13,7 @@ export default function WaitlistSection() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email) return;
     setStatus("loading");
@@ -157,12 +157,12 @@ export default function WaitlistSection() {
                             Joining...
                           </>
                         ) : (
-                          "Claim My Free Month →"
+                          "Lock In $5/mo — Join Waitlist →"
                         )}
                       </button>
 
                       <p className="text-center text-[10px] text-[#9CA3AF] mt-1">
-                        No spam. Unsubscribe anytime. Free month applied at launch.
+                        No spam. Unsubscribe anytime. $5/mo rate locked in at launch.
                       </p>
                     </form>
                   </>
