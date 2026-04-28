@@ -73,7 +73,7 @@ export default function WaitlistSection() {
               {/* Incentive badge */}
               <div className="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 rounded-full px-4 py-1.5 text-sm font-semibold mb-5">
                 <Gift size={14} strokeWidth={2.5} />
-                Waitlist Exclusive — $5/mo Instead of $8
+                Waitlist Exclusive — $29 One-Time Instead of $59
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-4 text-balance">
@@ -157,12 +157,12 @@ export default function WaitlistSection() {
                             Joining...
                           </>
                         ) : (
-                          "Lock In $5/mo — Join Waitlist →"
+                          "Lock In $29 — Join Waitlist →"
                         )}
                       </button>
 
                       <p className="text-center text-[10px] text-[#9CA3AF] mt-1">
-                        No spam. Unsubscribe anytime. $5/mo rate locked in at launch.
+                        No spam. Unsubscribe anytime. $29 one-time payment locked in at launch.
                       </p>
                     </form>
                   </>
