@@ -8,13 +8,28 @@ import Link from "next/link";
 // - ctaHref: swap "#download" for a Stripe Checkout URL or RevenueCat paywall deep-link
 // - priceId: Stripe price ID to pass to your checkout handler
 // - type: "free" | "subscription" | "lifetime" — lets your handler route correctly
+const PRO_FEATURES = [
+  "Unlimited swing analyses",
+  "Advanced AI swing scoring",
+  "Full visual overlays + swing path",
+  "Ideal swing comparison overlay",
+  "Club-specific analysis",
+  "Impact frame analysis",
+  "Full lesson system with 50+ drills",
+  "Smart AI recommendations",
+  "Full progress tracking",
+  "Swing comparison tools",
+  "Friends leaderboard",
+  "Priority AI coaching insights",
+];
+
 const plans = [
   {
     type: "free" as const,
     name: "Free",
     price: "$0",
-    period: "forever",
-    description: "Everything you need to get started.",
+    billing: "/forever",
+    description: "Everything you need to test your swing.",
     cta: "Download Free",
     ctaHref: "#download",
     priceId: null,
@@ -23,53 +38,37 @@ const plans = [
     features: [
       "5 swing analyses per month",
       "Slow motion playback",
-      "Basic AI feedback",
-      "Lesson recommendations",
+      "Basic AI swing feedback",
       "Basic visual analysis",
-      "Progress history (30 days)",
+      "Limited progress history",
+      "Basic tips only",
     ],
   },
   {
     type: "subscription" as const,
     name: "Pro",
     price: "$8",
-    period: "per month",
-    description: "Unlimited access. Serious improvement.",
+    billing: "/per month",
+    description: "Unlimited analysis for serious improvement.",
     cta: "Start Pro Monthly",
     ctaHref: "#download",
     priceId: null, // e.g. "price_pro_monthly"
     highlight: false,
     badge: "Most Popular",
-    features: [
-      "Unlimited swing analyses",
-      "Advanced visual analysis",
-      "Full lesson packs (50+ drills)",
-      "Ghosted ideal swing overlay",
-      "Full progress tracking",
-      "Friends leaderboard",
-      "Impact frame deep analysis",
-      "Priority AI coaching insights",
-    ],
+    features: PRO_FEATURES,
   },
   {
     type: "lifetime" as const,
     name: "Lifetime Access",
     price: "$59",
-    period: "one-time",
+    billing: "one-time",
     description: "Get full access to ImpactAI without a subscription.",
     cta: "Get Lifetime Access",
     ctaHref: "#download",
     priceId: null, // e.g. "price_lifetime_001"
     highlight: true,
     badge: "Best Value",
-    features: [
-      "Unlimited swing analyses",
-      "Full visual analysis tools",
-      "Auto lesson recommendations",
-      "Progress tracking",
-      "Friends leaderboard features",
-      "All future updates included",
-    ],
+    features: PRO_FEATURES,
   },
 ];
 
@@ -93,7 +92,7 @@ export default function PricingSection() {
         </div>
 
         {/* Cards — 3-col on large, stacked on mobile */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -150,7 +149,7 @@ export default function PricingSection() {
                       plan.highlight ? "text-white/70" : "text-[#6B7280]"
                     }`}
                   >
-                    {plan.type === "lifetime" ? " one-time" : `/${plan.period}`}
+                    {plan.billing}
                   </span>
                 </div>
                 <p
@@ -211,7 +210,7 @@ export default function PricingSection() {
 
         {/* Fine print */}
         <p className="text-center text-sm text-[#9CA3AF] mt-8">
-          Pro plan billed monthly. Cancel anytime. No credit card required for Free.
+          Pro billed monthly. Lifetime is a one-time payment. Free plan requires no credit card.
         </p>
       </div>
     </section>
