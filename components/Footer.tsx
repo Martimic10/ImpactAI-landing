@@ -41,7 +41,7 @@ function TikTokIcon() {
 
 const socials = [
   { Icon: XIcon, label: "X (Twitter)", href: "https://x.com/ImpactAIGolf" },
-  { Icon: InstagramIcon, label: "Instagram", href: "#" },
+  { Icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/impactaigolf?igsh=dGI2Y25sMTFyNTNu&utm_source=ig_contact_invite" },
   { Icon: TikTokIcon, label: "TikTok", href: "#" },
 ];
 
