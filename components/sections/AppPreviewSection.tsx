@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import PhoneMockup from "@/components/PhoneMockup";
-import OverlayScreen from "@/components/screens/OverlayScreen";
 import LeaderboardScreen from "@/components/screens/LeaderboardScreen";
 
 type Screen =
@@ -38,7 +37,8 @@ const screens: Screen[] = [
   },
   {
     label: "Visual Overlay",
-    component: OverlayScreen,
+    mockupSrc: "/overlay-mockup-removebg-preview.png",
+    alt: "ImpactAI visual overlay analysis",
     title: "Visual Swing Overlay",
     body: "See your actual swing path drawn over your video alongside the ideal path. The visual gap makes it instantly clear what to correct — no guessing.",
     points: ["Swing path visualization", "Ideal path ghost overlay", "Impact point marker"],

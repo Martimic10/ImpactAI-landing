@@ -1,8 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import PhoneMockup from "@/components/PhoneMockup";
-import OverlayScreen from "@/components/screens/OverlayScreen";
 import { Eye, Crosshair, GitCompare, Lightbulb } from "lucide-react";
 
 const points = [
@@ -40,15 +39,28 @@ export default function VisualAnalysisSection() {
           {/* Phone mockup */}
           <div className="flex justify-center order-2 lg:order-1">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-radial from-[#A5D6A7]/30 to-transparent scale-150 pointer-events-none" />
-              <PhoneMockup screen={<OverlayScreen />} tilt="left" />
-              {/* Floating stat badge */}
-              <div className="absolute -right-4 top-16 bg-white rounded-2xl shadow-xl border border-[#E5E7EB] px-4 py-3">
+              {/* Glow */}
+              <div className="absolute inset-0 bg-[#A5D6A7]/20 blur-3xl scale-125 rounded-full pointer-events-none" />
+
+              {/* Slanted overlay mockup */}
+              <Image
+                src="/overlay-mockup-removebg-preview.png"
+                alt="ImpactAI visual overlay analysis"
+                width={280}
+                height={605}
+                className="w-[220px] sm:w-[260px] lg:w-[280px] h-auto drop-shadow-2xl -rotate-6"
+                priority
+              />
+
+              {/* Path Deviation badge */}
+              <div className="absolute -right-4 sm:-right-8 top-16 bg-white rounded-2xl shadow-xl border border-[#E5E7EB] px-4 py-3 z-10">
                 <p className="text-[#2E7D32] text-xs font-bold">Path Deviation</p>
                 <p className="text-[#111111] text-xl font-extrabold">+2°</p>
                 <p className="text-[#9CA3AF] text-[10px]">Outside-in</p>
               </div>
-              <div className="absolute -left-4 bottom-24 bg-white rounded-2xl shadow-xl border border-[#E5E7EB] px-4 py-3">
+
+              {/* Impact Score badge */}
+              <div className="absolute -left-4 sm:-left-8 bottom-24 bg-white rounded-2xl shadow-xl border border-[#E5E7EB] px-4 py-3 z-10">
                 <p className="text-[#2E7D32] text-xs font-bold">Impact Score</p>
                 <p className="text-[#111111] text-xl font-extrabold">91</p>
                 <p className="text-[#9CA3AF] text-[10px]">Excellent</p>
