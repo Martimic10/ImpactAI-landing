@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import AppPreviewSection from "@/components/sections/AppPreviewSection";
 import DifferentiatorSection from "@/components/sections/DifferentiatorSection";
@@ -18,14 +17,13 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <HowItWorksSection />
+        <WaitlistSection />
         <FeaturesSection />
         <AppPreviewSection />
         <DifferentiatorSection />
         <VisualAnalysisSection />
         <SocialSection />
         <PricingSection />
-        <WaitlistSection />
         <FAQSection />
         <FinalCTASection />
       </main>

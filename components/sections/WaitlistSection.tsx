@@ -83,7 +83,7 @@ export default function WaitlistSection() {
               </h2>
 
               <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-                Join the waitlist and lock in Pro at <span className="text-white font-semibold">$5/month</span> — a discounted rate exclusively for early supporters. Once the waitlist closes, Pro goes back to $8/mo.
+                Join the waitlist and get <span className="text-white font-semibold">Lifetime Access for $29</span> — a one-time payment exclusively for early supporters. Once the waitlist closes, it goes back to $59.
               </p>
 
             </div>
@@ -119,9 +119,9 @@ export default function WaitlistSection() {
                 ) : (
                   <>
                     <div className="mb-5">
-                      <p className="text-lg font-bold text-[#111111] mb-1">Join the Waitlist</p>
+                      <p className="text-lg font-bold text-[#111111] mb-1">Get Lifetime Access for $29</p>
                       <p className="text-sm text-[#6B7280]">
-                        Be first to know. Get 1 month of Pro free at launch.
+                        Join the waitlist and lock in a <span className="text-[#2E7D32] font-semibold">one-time $29 deal</span> — exclusively for early supporters.
                       </p>
                     </div>
 
