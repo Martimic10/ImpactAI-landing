@@ -9,18 +9,16 @@ import Link from "next/link";
 // - priceId: Stripe price ID to pass to your checkout handler
 // - type: "free" | "subscription" | "lifetime" — lets your handler route correctly
 const PRO_FEATURES = [
-  "Unlimited swing analyses",
-  "Advanced AI swing scoring",
-  "Full visual overlays + swing path",
-  "Ideal swing comparison overlay",
-  "Club-specific analysis",
-  "Impact frame analysis",
-  "Full lesson system with 50+ drills",
-  "Smart AI recommendations",
+  "Unlimited analyses",
+  "Slow-motion replay",
+  "AI coaching: fixes, drills, and ball flight prediction",
+  "Pose skeleton overlay with landmark detection",
+  "4-phase swing breakdown: Address, Top, Impact, Follow-through",
+  "Pro reference compare with tour swing side-by-side",
+  "Swing vs swing comparison with metric comparison bars",
+  "Leaderboard filters: streak and total swings",
   "Full progress tracking",
-  "Swing comparison tools",
-  "Friends leaderboard",
-  "Priority AI coaching insights",
+  "Friends: shared swings and social features",
 ];
 
 const plans = [

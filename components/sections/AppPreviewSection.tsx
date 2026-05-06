@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import PhoneMockup from "@/components/PhoneMockup";
-import LeaderboardScreen from "@/components/screens/LeaderboardScreen";
 
 type Screen =
   | { label: string; mockupSrc: string; alt: string; title: string; body: string; points: string[] }
@@ -45,7 +44,8 @@ const screens: Screen[] = [
   },
   {
     label: "Leaderboard",
-    component: LeaderboardScreen,
+    mockupSrc: "/leaderboard-mockup-removebg-preview.png",
+    alt: "ImpactAI friends leaderboard",
     title: "Friends Leaderboard",
     body: "Stay motivated by competing with friends on weekly improvement challenges. Share your best swings, celebrate progress, and keep each other accountable.",
     points: ["Weekly swing challenges", "Share videos with friends", "Progress streak tracking"],

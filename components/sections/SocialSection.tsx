@@ -1,8 +1,7 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import PhoneMockup from "@/components/PhoneMockup";
-import LeaderboardScreen from "@/components/screens/LeaderboardScreen";
+import Image from "next/image";
 import { Users, Share2, TrendingUp, Flame } from "lucide-react";
 
 const features = [
@@ -91,8 +90,15 @@ export default function SocialSection() {
           {/* Phone */}
           <div className="flex justify-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-radial from-[#A5D6A7]/20 to-transparent scale-150 pointer-events-none" />
-              <PhoneMockup screen={<LeaderboardScreen />} tilt="right" />
+              <div className="absolute inset-0 bg-[#A5D6A7]/15 blur-3xl scale-125 rounded-full pointer-events-none" />
+              <Image
+                src="/leaderboard-mockup-removebg-preview.png"
+                alt="ImpactAI friends leaderboard"
+                width={280}
+                height={605}
+                className="w-[220px] sm:w-[260px] lg:w-[280px] h-auto drop-shadow-2xl relative"
+                priority
+              />
             </div>
           </div>
         </div>
