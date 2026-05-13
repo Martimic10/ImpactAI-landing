@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -87,6 +87,42 @@
   --sidebar-ring: #2E7D32;
 }
 
+/* Class is toggled on documentElement; use html.dark for specificity over :root */
+html.dark {
+  color-scheme: dark;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #4ade80;
+  --primary-foreground: #052e16;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #14532d;
+  --accent-foreground: #bbf7d0;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #3f3f46;
+  --input: #3f3f46;
+  --ring: #4ade80;
+  --chart-1: #4ade80;
+  --chart-2: #86efac;
+  --chart-3: #22c55e;
+  --chart-4: #166534;
+  --chart-5: #14532d;
+  --sidebar: #18181b;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #4ade80;
+  --sidebar-primary-foreground: #052e16;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #bbf7d0;
+  --sidebar-border: #3f3f46;
+  --sidebar-ring: #4ade80;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -106,6 +142,9 @@
   .gradient-green {
     background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%);
   }
+  html.dark .gradient-green {
+    background: linear-gradient(135deg, #14532d 0%, #166534 45%, #22c55e 100%);
+  }
   .gradient-green-light {
     background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
   }
@@ -115,8 +154,23 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  html.dark .text-gradient-green {
+    background: linear-gradient(135deg, #bbf7d0, #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   .glow-green {
     box-shadow: 0 0 40px rgba(46, 125, 50, 0.15), 0 0 80px rgba(46, 125, 50, 0.05);
+  }
+  html.dark .glow-green {
+    box-shadow: 0 0 48px rgba(74, 222, 128, 0.12), 0 0 96px rgba(74, 222, 128, 0.06);
+  }
+  .impact-badge {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium border border-emerald-300/60 bg-emerald-50 text-emerald-950;
+  }
+  html.dark .impact-badge {
+    @apply border-emerald-700/50 bg-emerald-950/80 text-emerald-100;
   }
   .card-hover {
     @apply transition-all duration-300 ease-out;
@@ -124,17 +178,6 @@
   .card-hover:hover {
     @apply -translate-y-1 shadow-xl;
   }
-}
-
-/* Scroll animations */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.scroll-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Custom scrollbar */
@@ -147,4 +190,13 @@
 ::-webkit-scrollbar-thumb {
   background: #2E7D32;
   border-radius: 3px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
 }

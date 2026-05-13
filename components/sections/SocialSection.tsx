@@ -1,7 +1,13 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  cascadeVariants,
+  defaultViewport,
+  fadeUpSoftVariants,
+  fadeUpVariants,
+} from "@/components/motion/scroll-motion";
 import { Users, Share2, TrendingUp, Flame } from "lucide-react";
 
 const features = [
@@ -28,81 +34,90 @@ const features = [
 ];
 
 export default function SocialSection() {
-  const ref = useScrollAnimation();
-
   return (
-    <section ref={ref} className="py-24 bg-[#F9FAFB] scroll-animate">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-muted/80 dark:bg-muted/40">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={cascadeVariants(0.12, 0.04)}
+      >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Text */}
-          <div>
-            <div className="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#1B5E20] rounded-full px-4 py-1.5 text-sm font-medium mb-5">
-              Social & Retention
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111111] tracking-tight leading-tight mb-5">
+          <motion.div variants={fadeUpVariants}>
+            <div className="impact-badge mb-5 w-fit">Social & Retention</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight leading-tight mb-5">
               Train With Friends
             </h2>
-            <p className="text-lg text-[#6B7280] leading-relaxed mb-8">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Golf is better with friends. ImpactAI keeps you accountable,
               motivated, and improving — together. Challenge your crew, share
               your best swings, and celebrate every breakthrough.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <motion.div
+              variants={cascadeVariants(0.06, 0.04)}
+              className="grid sm:grid-cols-2 gap-4 mb-8"
+            >
               {features.map((f, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="flex gap-3 items-start p-4 bg-white rounded-2xl border border-[#E5E7EB] shadow-sm hover:shadow-md hover:border-[#A5D6A7] transition-all duration-200"
+                  variants={fadeUpSoftVariants}
+                  className="flex gap-3 items-start p-4 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-primary/35 transition-all duration-200 dark:shadow-none"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-[#E8F5E9] flex items-center justify-center flex-shrink-0">
-                    <f.icon size={18} className="text-[#2E7D32]" />
+                  <div className="w-9 h-9 rounded-xl bg-accent/80 flex items-center justify-center flex-shrink-0 dark:bg-accent/40">
+                    <f.icon size={18} className="text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm text-[#111111] mb-0.5">
+                    <p className="font-semibold text-sm text-foreground mb-0.5">
                       {f.title}
                     </p>
-                    <p className="text-xs text-[#6B7280] leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {f.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Social proof */}
-            <div className="flex items-center gap-4 p-4 bg-[#E8F5E9] rounded-2xl border border-[#A5D6A7]">
+            <motion.div
+              variants={fadeUpSoftVariants}
+              className="flex items-center gap-4 p-4 rounded-2xl border border-primary/30 bg-accent/40 dark:bg-emerald-950/40 dark:border-emerald-800/50"
+            >
               <div className="flex -space-x-2">
                 {["T", "S", "J", "M"].map((l, i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full gradient-green flex items-center justify-center text-white text-xs font-bold border-2 border-white shadow-sm"
+                    className="w-8 h-8 rounded-full gradient-green flex items-center justify-center text-white text-xs font-bold border-2 border-background shadow-sm"
                   >
                     {l}
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-[#1B5E20] font-medium">
+              <p className="text-sm text-accent-foreground font-medium dark:text-emerald-100">
                 Join golfers already improving their game with friends
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Phone */}
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            variants={fadeUpVariants}
+          >
             <div className="relative">
-              <div className="absolute inset-0 bg-[#A5D6A7]/15 blur-3xl scale-125 rounded-full pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/12 dark:bg-primary/8 blur-3xl scale-125 rounded-full pointer-events-none" />
               <Image
                 src="/leaderboard-mockup-removebg-preview.png"
                 alt="ImpactAI friends leaderboard"
                 width={280}
                 height={605}
-                className="w-[220px] sm:w-[260px] lg:w-[280px] h-auto drop-shadow-2xl relative"
+                className="relative w-[220px] sm:w-[260px] lg:w-[280px] h-auto drop-shadow-2xl dark:drop-shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
                 priority
               />
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

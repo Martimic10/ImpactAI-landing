@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { defaultViewport, fadeUpVariants } from "@/components/motion/scroll-motion";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 const footerLinks = {
   Product: [
@@ -8,7 +13,7 @@ const footerLinks = {
     { label: "Pricing", href: "#pricing" },
     { label: "Download", href: "#download" },
   ],
-Legal: [
+  Legal: [
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
     { label: "Cookie Policy", href: "#" },
@@ -47,11 +52,15 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] text-white">
+    <motion.footer
+      className="bg-[#111111] text-white dark:bg-zinc-950 dark:text-zinc-50 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={defaultViewport}
+      variants={fadeUpVariants}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        {/* Top section */}
         <div className="flex flex-col sm:flex-row gap-10 mb-12">
-          {/* Brand */}
           <div className="flex-1">
             <Link href="/" className="flex items-center gap-2 group mb-4">
               <Image
@@ -62,21 +71,20 @@ export default function Footer() {
                 className="rounded-xl shadow-md group-hover:shadow-lg transition-shadow"
               />
               <span className="font-bold text-xl text-white tracking-tight">
-                Impact<span className="text-[#66BB6A]">AI</span>
+                Impact<span className="text-[#66BB6A] dark:text-primary">AI</span>
               </span>
             </Link>
-            <p className="text-[#9CA3AF] text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-zinc-400 text-sm leading-relaxed max-w-xs mb-6 dark:text-zinc-500">
               AI-powered golf coaching in your pocket. Record, analyze, improve.
               Built for golfers of every skill level.
             </p>
-            {/* Socials */}
             <div className="flex items-center gap-3">
               {socials.map((s) => (
                 <Link
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#2E7D32] transition-colors"
+                  className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#2E7D32] dark:hover:bg-primary transition-colors"
                 >
                   <s.Icon />
                 </Link>
@@ -84,10 +92,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category} className="shrink-0 ml-8">
-              <h4 className="text-xs font-bold text-[#9CA3AF] uppercase tracking-widest mb-4">
+            <div key={category} className="shrink-0 sm:ml-8">
+              <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-4 dark:text-zinc-500">
                 {category}
               </h4>
               <ul className="flex flex-col gap-2.5">
@@ -95,7 +102,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[#D1D5DB] hover:text-[#66BB6A] transition-colors"
+                      className="text-sm text-zinc-300 hover:text-[#66BB6A] dark:text-zinc-400 dark:hover:text-primary transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -106,16 +113,18 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#6B7280] text-sm">
-            © {new Date().getFullYear()} ImpactAI. All rights reserved.
-          </p>
-          <p className="text-[#6B7280] text-sm">
+        <div className="border-t border-white/10 pt-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <ThemeToggle />
+            <p className="text-zinc-500 text-sm dark:text-zinc-500">
+              © {new Date().getFullYear()} ImpactAI. All rights reserved.
+            </p>
+          </div>
+          <p className="text-zinc-500 text-sm lg:text-right dark:text-zinc-500">
             Made for golfers. Powered by AI.
           </p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

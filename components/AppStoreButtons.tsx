@@ -39,9 +39,9 @@ export default function AppStoreButtons({
       <Link
         href="#"
         aria-label="Coming Soon on the App Store"
-        className={`inline-flex items-center ${sizeClasses[size]} bg-[#111111] text-white rounded-2xl hover:bg-[#2E7D32] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group`}
+        className={`inline-flex items-center ${sizeClasses[size]} bg-foreground text-background rounded-2xl hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-primary dark:hover:text-primary-foreground`}
       >
-        <AppleIcon className={`${iconSize[size]} flex-shrink-0 text-white`} />
+        <AppleIcon className={`${iconSize[size]} flex-shrink-0 text-background dark:text-zinc-900 group-hover:text-white dark:group-hover:text-primary-foreground`} />
         <div className="flex flex-col text-left leading-tight">
           <span className={`${textSize[size]} opacity-80 uppercase tracking-wider`}>
             Coming Soon on the
@@ -54,7 +54,7 @@ export default function AppStoreButtons({
       <Link
         href="#"
         aria-label="Coming Soon on Google Play"
-        className={`inline-flex items-center ${sizeClasses[size]} bg-[#111111] text-white rounded-2xl hover:bg-[#2E7D32] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group`}
+        className={`inline-flex items-center ${sizeClasses[size]} bg-foreground text-background rounded-2xl hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-primary dark:hover:text-primary-foreground`}
       >
         <GooglePlayIcon className={`${iconSize[size]} flex-shrink-0`} />
         <div className="flex flex-col text-left leading-tight">

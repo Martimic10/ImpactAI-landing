@@ -1,6 +1,12 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
+import {
+  cascadeVariants,
+  defaultViewport,
+  fadeUpSoftVariants,
+  fadeUpVariants,
+} from "@/components/motion/scroll-motion";
 import {
   Accordion,
   AccordionContent,
@@ -47,42 +53,45 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const ref = useScrollAnimation();
-
   return (
-    <section id="faq" ref={ref} className="py-24 bg-[#F9FAFB] scroll-animate">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#1B5E20] rounded-full px-4 py-1.5 text-sm font-medium mb-4">
-            FAQs
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111111] tracking-tight">
+    <section id="faq" className="py-24 bg-muted/80 dark:bg-muted/40">
+      <motion.div
+        className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={cascadeVariants(0.1, 0.04)}
+      >
+        <motion.div variants={fadeUpVariants} className="text-center mb-12">
+          <div className="impact-badge mb-4 mx-auto w-fit">FAQs</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
             Common Questions
           </h2>
-          <p className="mt-4 text-lg text-[#6B7280]">
+          <p className="mt-4 text-lg text-muted-foreground">
             Everything you need to know before downloading.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Accordion */}
-        <Accordion className="flex flex-col gap-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={i}
-              className="bg-white border border-[#E5E7EB] rounded-2xl px-6 shadow-sm open:border-[#A5D6A7] open:shadow-md transition-all duration-200"
-            >
-              <AccordionTrigger className="text-left font-semibold text-[#111111] hover:text-[#2E7D32] hover:no-underline py-5 text-sm sm:text-base">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#6B7280] leading-relaxed pb-5 text-sm">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
+        <motion.div variants={cascadeVariants(0.05, 0.06)}>
+          <Accordion className="flex flex-col gap-3">
+            {faqs.map((faq, i) => (
+              <motion.div key={i} variants={fadeUpSoftVariants}>
+                <AccordionItem
+                  value={String(i)}
+                  className="bg-card border border-border rounded-2xl px-6 shadow-sm open:border-primary/40 open:shadow-md transition-all duration-200 dark:shadow-none"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline py-5 text-sm sm:text-base">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-sm">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            ))}
+          </Accordion>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
