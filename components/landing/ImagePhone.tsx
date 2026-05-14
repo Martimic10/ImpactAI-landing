@@ -11,12 +11,19 @@ type ImagePhoneProps = {
   height?: number;
   className?: string;
   priority?: boolean;
+  /** Responsive `sizes` for next/image (important for mobile bandwidth). */
+  sizes?: string;
   /**
-   * Pin outer frame to the same 290×572 footprint as PhoneMockup (object-contain screenshot).
-   * Use in horizontal rails so every mockup matches the AI coach device size.
+   * Fixed-size slot for rails / grids. No extra bezel — PNG includes its own device frame.
    */
   fitShell?: boolean;
 };
+
+/** No ring / dark mat: only soft depth so mockups read as floating screenshots. */
+const mockupWrap = "relative overflow-hidden rounded-[2.75rem] bg-transparent shadow-[0_28px_64px_-32px_rgba(0,0,0,0.55)]";
+
+const defaultFitSizes =
+  "(max-width: 640px) min(calc(100vw - 2rem), 360px), (max-width: 1024px) 40vw, 320px";
 
 export function ImagePhone({
   src,
@@ -25,55 +32,46 @@ export function ImagePhone({
   height = MOCKUP_IMAGE_H,
   className,
   priority,
+  sizes,
   fitShell,
 }: ImagePhoneProps) {
   if (fitShell) {
+    const resolvedSizes = sizes ?? defaultFitSizes;
     return (
       <div
-        className={cn(
-          "relative overflow-hidden rounded-[2.6rem] border-[2.5px] border-[#333] bg-[#0a0a0a] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.85)]",
-          className
-        )}
+        className={cn(mockupWrap, className)}
         style={{ width: MOCKUP_SHELL_W, height: MOCKUP_SHELL_H }}
       >
-        <div className="absolute top-3 left-1/2 z-10 flex h-[26px] w-[88px] -translate-x-1/2 items-center justify-center gap-2 rounded-full bg-[#0a0a0a]">
-          <div className="h-2.5 w-2.5 rounded-full border border-[#2a2a2a] bg-[#1a1a1a]" />
-          <div className="h-[14px] w-[34px] rounded-full border border-[#2a2a2a] bg-[#1a1a1a]" />
-        </div>
         <div className="absolute inset-0 z-[1]">
           <Image
             src={src}
             alt={alt}
             fill
-            sizes={`${MOCKUP_SHELL_W}px`}
-            className="select-none object-contain object-top"
+            sizes={resolvedSizes}
+            className="select-none object-contain object-center"
             priority={priority}
             draggable={false}
           />
         </div>
-        <div className="pointer-events-none absolute inset-0 z-[2] rounded-[2.45rem] bg-gradient-to-br from-white/[0.07] via-transparent to-transparent" />
       </div>
     );
   }
 
+  const resolvedSizes =
+    sizes ?? "(max-width: 640px) 60vw, (max-width: 1024px) 45vw, 360px";
+
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-[2.35rem] border border-white/[0.12] bg-[#0c0c0c] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.85)]",
-        className
-      )}
-    >
-      <div className="absolute top-2.5 left-1/2 z-10 h-[26px] w-[88px] -translate-x-1/2 rounded-full bg-black/90 ring-1 ring-white/[0.08]" />
+    <div className={cn(mockupWrap, className)}>
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
+        sizes={resolvedSizes}
         className="h-auto w-full select-none"
         priority={priority}
         draggable={false}
       />
-      <div className="pointer-events-none absolute inset-0 rounded-[2.35rem] bg-gradient-to-br from-white/[0.07] via-transparent to-transparent" />
     </div>
   );
 }

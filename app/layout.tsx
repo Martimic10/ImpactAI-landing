@@ -1,12 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
+import { MotionLazyProvider } from "@/components/motion/MotionLazyProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  adjustFontFallback: true,
+  preload: true,
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -56,20 +61,25 @@ export const viewport: Viewport = {
   ],
 };
 
-const themeInitScript = `(function(){try{var t=localStorage.getItem("impactai-theme");if(t==="light"){document.documentElement.classList.remove("dark");}else{document.documentElement.classList.add("dark");}}catch(e){document.documentElement.classList.add("dark");}})();`;
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const cookieVal = cookieStore.get("impactai-theme")?.value;
+  const initialTheme = cookieVal === "light" ? "light" : "dark";
+
   return (
-    <html lang="en" className={`dark ${inter.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${initialTheme === "dark" ? "dark " : ""}${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-background text-foreground">
-        <script
-          dangerouslySetInnerHTML={{ __html: themeInitScript }}
-        />
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider initialTheme={initialTheme}>
+          <MotionLazyProvider>{children}</MotionLazyProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

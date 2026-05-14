@@ -25,6 +25,14 @@ function applyDomTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
 }
 
+function writeThemeCookie(theme: Theme) {
+  if (typeof document === "undefined") return;
+  const maxAge = 60 * 60 * 24 * 365;
+  const secure =
+    typeof window !== "undefined" && window.location.protocol === "https:";
+  document.cookie = `${STORAGE_KEY}=${theme}; Path=/; Max-Age=${maxAge}; SameSite=Lax${secure ? "; Secure" : ""}`;
+}
+
 function readStoredTheme(): Theme | null {
   if (typeof window === "undefined") return null;
   try {
@@ -36,17 +44,29 @@ function readStoredTheme(): Theme | null {
   return null;
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+export function ThemeProvider({
+  children,
+  initialTheme = "dark",
+}: {
+  children: React.ReactNode;
+  initialTheme?: Theme;
+}) {
+  const [theme, setThemeState] = useState<Theme>(initialTheme);
 
   useLayoutEffect(() => {
-    const stored = readStoredTheme();
-    const resolved: Theme = stored ?? "dark";
+    const fromLs = readStoredTheme();
+    const resolved: Theme = fromLs ?? initialTheme;
     applyDomTheme(resolved);
+    writeThemeCookie(resolved);
+    try {
+      localStorage.setItem(STORAGE_KEY, resolved);
+    } catch {
+      /* ignore */
+    }
     startTransition(() => {
       setThemeState(resolved);
     });
-  }, []);
+  }, [initialTheme]);
 
   const setTheme = useCallback((t: Theme) => {
     setThemeState(t);
@@ -55,6 +75,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       /* ignore */
     }
+    writeThemeCookie(t);
     applyDomTheme(t);
   }, []);
 

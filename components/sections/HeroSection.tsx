@@ -1,11 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AppleIcon, GooglePlayIcon } from "@/components/icons/StoreIcons";
-import PhoneMockup from "@/components/PhoneMockup";
 import { ImagePhone } from "@/components/landing/ImagePhone";
-import { ChatMockup } from "@/components/landing/ChatMockup";
-import { MOCKUP_SHELL_H, MOCKUP_SHELL_W } from "@/lib/mockup-size";
 import {
   cascadeVariants,
   defaultViewport,
@@ -17,11 +14,11 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden pt-[calc(env(safe-area-inset-top,0px)+6.75rem)] pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-36">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(52,224,111,0.18),transparent)]" />
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-brand/10 blur-[100px]" />
-      <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-brand/8 blur-[120px]" />
+      <div className="pointer-events-none absolute -left-32 top-1/3 hidden h-80 w-80 rounded-full bg-brand/10 blur-[100px] sm:block" />
+      <div className="pointer-events-none absolute -right-24 bottom-0 hidden h-96 w-96 rounded-full bg-brand/8 blur-[120px] sm:block" />
 
       <div className="relative mx-auto grid max-w-6xl min-w-0 items-center gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: easeSmooth }}
@@ -68,9 +65,9 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="relative mx-auto h-[min(68svh,480px)] w-full min-w-0 max-w-[min(100%,420px)] sm:h-[min(72vh,560px)] sm:max-w-[460px] lg:mx-0 lg:max-w-none lg:justify-self-end"
           initial="hidden"
           whileInView="visible"
@@ -80,53 +77,51 @@ export default function HeroSection() {
           <div className="absolute bottom-[8%] left-[4%] right-[4%] h-40 rounded-full bg-brand/15 blur-3xl" />
           <div className="absolute bottom-[12%] left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-brand/10 blur-[80px]" />
 
-          <motion.div
+          <m.div
             variants={fadeUpSoftVariants}
             className="absolute left-0 top-[18%] z-10 w-[46%] -rotate-[8deg] sm:w-[44%]"
           >
             <ImagePhone
-              src="/leaderboard-mockup-removebg-preview.png"
-              alt="Friends leaderboard"
-              priority
+              src="/social-mockup-removebg-preview.png"
+              alt="Social feed"
+              sizes="(max-width: 640px) 46vw, 200px"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={fadeUpSoftVariants}
             className="absolute right-[2%] top-[8%] z-20 w-[48%] rotate-[6deg] sm:w-[46%]"
           >
             <ImagePhone
-              src="/results-screen-removebg-preview.png"
-              alt="Progress tracking"
-              priority
+              src="/results-mockup1-removebg-preview.png"
+              alt="Swing analysis results"
+              sizes="(max-width: 640px) 48vw, 220px"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={fadeUpSoftVariants}
             className="absolute bottom-[6%] left-[12%] z-30 w-[52%] -rotate-[3deg] sm:left-[10%] sm:w-[50%]"
           >
             <ImagePhone
-              src="/Analyze-screen-removebg-preview.png"
-              alt="Swing upload"
-              priority
+              src="/friends-mockup-removebg-preview.png"
+              alt="Friends"
+              sizes="(max-width: 640px) 52vw, 240px"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={fadeUpSoftVariants}
             className="absolute left-1/2 top-[2%] z-40 w-[58%] -translate-x-1/2 sm:w-[54%]"
           >
-            <div className="origin-top scale-[0.78] sm:scale-[0.82]">
-              <PhoneMockup
-                screen={<ChatMockup />}
-                tilt="none"
-                shellWidth={MOCKUP_SHELL_W}
-                shellHeight={MOCKUP_SHELL_H}
-              />
-            </div>
-          </motion.div>
-        </motion.div>
+            <ImagePhone
+              src="/coachai-mockup-removebg-preview.png"
+              alt="AI golf coach"
+              priority
+              sizes="(max-width: 640px) 58vw, 280px"
+            />
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

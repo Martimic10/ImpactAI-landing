@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Upload, Sparkles, Trophy } from "lucide-react";
 import {
   cascadeVariants,
@@ -31,24 +31,24 @@ export default function HowItWorksSection() {
   return (
     <section id="how-it-works" className="border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={cascadeVariants(0.12, 0.06)}
         >
-          <motion.div variants={fadeUpVariants} className="text-center">
+          <m.div variants={fadeUpVariants} className="text-center">
             <p className="section-label mb-3">How it works</p>
             <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Three steps. One better game.
             </h2>
-          </motion.div>
+          </m.div>
 
           <div className="relative mt-12 grid gap-10 sm:mt-16 md:mt-20 md:grid-cols-3 md:gap-8">
             <div className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-brand/0 via-brand/35 to-brand/0 md:block" />
 
             {steps.map((s, i) => (
-              <motion.div
+              <m.div
                 key={s.title}
                 variants={fadeUpSoftVariants}
                 className="relative flex flex-col items-center text-center"
@@ -65,10 +65,10 @@ export default function HowItWorksSection() {
                 <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
                   {s.body}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

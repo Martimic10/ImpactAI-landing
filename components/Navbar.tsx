@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -83,7 +83,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             className="fixed inset-0 z-[60] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -96,7 +96,7 @@ export default function Navbar() {
               aria-label="Close menu backdrop"
               onClick={() => setOpen(false)}
             />
-            <motion.nav
+            <m.nav
               className="absolute inset-0 flex w-full flex-col bg-[#0a0c0b] pt-[env(safe-area-inset-top,0px)]"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -116,7 +116,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-4 sm:px-4 sm:py-6">
                 {links.map((l, i) => (
-                  <motion.div
+                  <m.div
                     key={l.href}
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -129,7 +129,7 @@ export default function Navbar() {
                     >
                       {l.label}
                     </Link>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
               <div className="border-t border-white/[0.06] p-4 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))] sm:p-5">
@@ -141,8 +141,8 @@ export default function Navbar() {
                   Download
                 </Link>
               </div>
-            </motion.nav>
-          </motion.div>
+            </m.nav>
+          </m.div>
         )}
       </AnimatePresence>
     </>

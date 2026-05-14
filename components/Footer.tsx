@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { defaultViewport, fadeUpVariants } from "@/components/motion/scroll-motion";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 
@@ -21,8 +21,8 @@ const socials = [
 
 export default function Footer() {
   return (
-    <motion.footer
-      className="border-t border-white/[0.06] bg-[#050605] py-12 pb-[max(3rem,env(safe-area-inset-bottom,0px))] sm:py-14"
+    <m.footer
+      className="border-t border-white/10 bg-[#050605] py-12 pb-[max(3rem,env(safe-area-inset-bottom,0px))] sm:py-14"
       initial="hidden"
       whileInView="visible"
       viewport={defaultViewport}
@@ -38,7 +38,7 @@ export default function Footer() {
               height={36}
               className="h-9 w-9 rounded-xl object-contain ring-1 ring-white/10"
             />
-            <span className="text-sm font-semibold text-foreground">
+            <span className="text-sm font-semibold text-zinc-100">
               Impact<span className="text-brand">AI</span>
             </span>
           </Link>
@@ -46,25 +46,25 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
-          <nav className="flex flex-col gap-3 text-sm text-muted-foreground">
+          <nav className="flex flex-col gap-3 text-sm text-zinc-400">
             {footerLinks.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className="block py-1.5 transition hover:text-foreground"
+                className="block py-1.5 transition hover:text-zinc-100"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
-          <nav className="flex flex-col gap-3 text-sm text-muted-foreground">
+          <nav className="flex flex-col gap-3 text-sm text-zinc-400">
             {socials.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block py-1.5 transition hover:text-foreground"
+                className="block py-1.5 transition hover:text-zinc-100"
               >
                 {s.label}
               </a>
@@ -72,9 +72,9 @@ export default function Footer() {
           </nav>
         </div>
       </div>
-      <p className="mx-auto mt-12 max-w-6xl px-4 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
+      <p className="mx-auto mt-12 max-w-6xl px-4 text-center text-xs text-zinc-500 sm:px-6 lg:px-8">
         © {new Date().getFullYear()} ImpactAI. All rights reserved.
       </p>
-    </motion.footer>
+    </m.footer>
   );
 }

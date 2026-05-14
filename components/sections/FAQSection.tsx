@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -45,23 +45,23 @@ export default function FAQSection() {
   return (
     <section id="faq" className="border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-3xl min-w-0 px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={cascadeVariants(0.08, 0.04)}
         >
-          <motion.div variants={fadeUpVariants} className="text-center">
+          <m.div variants={fadeUpVariants} className="text-center">
             <p className="section-label mb-3">FAQ</p>
             <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Questions, answered.
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={cascadeVariants(0.06, 0.1)} className="mt-8 sm:mt-12">
+          <m.div variants={cascadeVariants(0.06, 0.1)} className="mt-8 sm:mt-12">
             <Accordion className="flex flex-col gap-3">
               {faqs.map((item, i) => (
-                <motion.div key={item.q} variants={fadeUpSoftVariants}>
+                <m.div key={item.q} variants={fadeUpSoftVariants}>
                   <AccordionItem
                     value={`faq-${i}`}
                     className="overflow-hidden rounded-2xl border border-white/[0.08] bg-card/60 px-1 shadow-sm transition-colors hover:border-white/[0.12]"
@@ -73,11 +73,11 @@ export default function FAQSection() {
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
-                </motion.div>
+                </m.div>
               ))}
             </Accordion>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

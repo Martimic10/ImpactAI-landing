@@ -1,13 +1,48 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import WhyImpactSection from "@/components/sections/WhyImpactSection";
-import ScreenshotsRailSection from "@/components/sections/ScreenshotsRailSection";
-import HowItWorksSection from "@/components/sections/HowItWorksSection";
-import AICoachSection from "@/components/sections/AICoachSection";
-import SocialCompetitionSection from "@/components/sections/SocialCompetitionSection";
-import FAQSection from "@/components/sections/FAQSection";
-import FinalCTASection from "@/components/sections/FinalCTASection";
-import Footer from "@/components/Footer";
+
+function SectionFallback() {
+  return (
+    <div
+      className="w-full animate-pulse rounded-none bg-foreground/[0.04] sm:rounded-2xl"
+      style={{ minHeight: "min(28vh, 16rem)" }}
+      aria-hidden
+    />
+  );
+}
+
+const WhyImpactSection = dynamic(
+  () => import("@/components/sections/WhyImpactSection"),
+  { loading: () => <SectionFallback /> }
+);
+const ScreenshotsRailSection = dynamic(
+  () => import("@/components/sections/ScreenshotsRailSection"),
+  { loading: () => <SectionFallback /> }
+);
+const HowItWorksSection = dynamic(
+  () => import("@/components/sections/HowItWorksSection"),
+  { loading: () => <SectionFallback /> }
+);
+const AICoachSection = dynamic(
+  () => import("@/components/sections/AICoachSection"),
+  { loading: () => <SectionFallback /> }
+);
+const SocialCompetitionSection = dynamic(
+  () => import("@/components/sections/SocialCompetitionSection"),
+  { loading: () => <SectionFallback /> }
+);
+const FAQSection = dynamic(
+  () => import("@/components/sections/FAQSection"),
+  { loading: () => <SectionFallback /> }
+);
+const FinalCTASection = dynamic(
+  () => import("@/components/sections/FinalCTASection"),
+  { loading: () => <SectionFallback /> }
+);
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <SectionFallback />,
+});
 
 export default function Home() {
   return (

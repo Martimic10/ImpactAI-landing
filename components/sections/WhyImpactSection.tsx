@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { MessageCircle, Users2, LineChart, Upload } from "lucide-react";
 import {
   cascadeVariants,
@@ -37,25 +37,25 @@ export default function WhyImpactSection() {
     <section id="features" className="relative border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={cascadeVariants(0.1, 0.04)}
         >
-          <motion.div variants={fadeUpVariants} className="mx-auto min-w-0 max-w-2xl px-1 text-center sm:px-0">
+          <m.div variants={fadeUpVariants} className="mx-auto min-w-0 max-w-2xl px-1 text-center sm:px-0">
             <p className="section-label mb-3">Why ImpactAI</p>
             <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Everything you need to improve your game.
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={cascadeVariants(0.08, 0.12)}
             className="mt-10 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:gap-6"
           >
             {cards.map((c) => (
-              <motion.article
+              <m.article
                 key={c.title}
                 variants={fadeUpSoftVariants}
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-card/80 p-6 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.75)] transition duration-300 hover:border-brand/25 hover:shadow-[0_28px_80px_-24px_rgba(52,224,111,0.12)] sm:rounded-3xl sm:p-8 lg:p-10"
@@ -67,10 +67,10 @@ export default function WhyImpactSection() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3 sm:text-base">
                   {c.body}
                 </p>
-              </motion.article>
+              </m.article>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );
