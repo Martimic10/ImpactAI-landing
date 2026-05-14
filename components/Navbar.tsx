@@ -48,7 +48,7 @@ export default function Navbar() {
               alt="ImpactAI"
               width={36}
               height={36}
-              className="h-9 w-9 shrink-0 rounded-xl object-contain ring-1 ring-white/10 transition group-hover:ring-brand/40"
+              className="h-9 w-9 shrink-0 rounded-xl object-contain ring-1 ring-black/10 transition group-hover:ring-brand/40 dark:ring-white/10"
             />
             <span className="truncate text-base font-semibold tracking-tight text-foreground">
               Impact<span className="text-brand">AI</span>
@@ -72,7 +72,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-foreground active:bg-white/[0.08] md:hidden"
+            className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border bg-muted/60 text-foreground transition active:bg-muted dark:border-white/10 dark:bg-white/[0.04] dark:active:bg-white/[0.08] md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen(true)}
           >
@@ -92,22 +92,22 @@ export default function Navbar() {
           >
             <button
               type="button"
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm dark:bg-black/70"
               aria-label="Close menu backdrop"
               onClick={() => setOpen(false)}
             />
             <m.nav
-              className="absolute inset-0 flex w-full flex-col bg-[#0a0c0b] pt-[env(safe-area-inset-top,0px)]"
+              className="absolute inset-0 flex w-full flex-col bg-background pt-[env(safe-area-inset-top,0px)] shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
             >
-              <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-3 sm:px-5 sm:py-4">
+              <div className="flex items-center justify-between border-b border-border px-4 py-3 sm:px-5 sm:py-4">
                 <span className="text-sm font-semibold text-foreground">Menu</span>
                 <button
                   type="button"
-                  className="flex size-11 items-center justify-center rounded-xl bg-white/[0.06] text-foreground active:bg-white/[0.1]"
+                  className="flex size-11 items-center justify-center rounded-xl border border-border bg-muted text-foreground transition active:bg-muted/80 dark:border-white/10 dark:bg-white/[0.06] dark:active:bg-white/[0.1]"
                   onClick={() => setOpen(false)}
                   aria-label="Close"
                 >
@@ -125,14 +125,14 @@ export default function Navbar() {
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="flex min-h-12 items-center rounded-2xl px-4 py-3 text-base font-medium text-foreground/90 transition active:bg-white/[0.08] hover:bg-white/[0.05]"
+                      className="flex min-h-12 items-center rounded-2xl px-4 py-3 text-base font-medium text-foreground transition hover:bg-muted active:bg-muted/80 dark:text-foreground/90 dark:hover:bg-white/[0.05] dark:active:bg-white/[0.08]"
                     >
                       {l.label}
                     </Link>
                   </m.div>
                 ))}
               </div>
-              <div className="border-t border-white/[0.06] p-4 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))] sm:p-5">
+              <div className="border-t border-border p-4 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))] sm:p-5 dark:border-white/[0.06]">
                 <Link
                   href="#download"
                   onClick={() => setOpen(false)}
