@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -10,28 +10,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ImpactAI — AI Golf Swing Analysis App",
+  title: "ImpactAI — Social Golf & AI Coach",
   description:
-    "Improve your golf swing with AI. Record your swing, get instant feedback, visual analysis, drills, and progress tracking with ImpactAI.",
+    "The AI-powered social app for golfers. Upload swings, track progress, compete with friends on leaderboards, and get personalized coaching from your AI golf coach.",
   keywords: [
-    "golf swing analyzer",
-    "AI golf coaching",
-    "golf swing analysis app",
-    "golf improvement app",
-    "golf AI feedback",
+    "golf app",
+    "social golf",
+    "golf leaderboard",
+    "AI golf coach",
+    "golf improvement",
+    "golf friends",
+    "swing upload",
+    "golf progress tracking",
   ],
   openGraph: {
-    title: "ImpactAI — AI Golf Swing Analysis App",
+    title: "ImpactAI — Social Golf & AI Coach",
     description:
-      "Improve your golf swing with AI. Record your swing, get instant feedback, visual analysis, drills, and progress tracking with ImpactAI.",
+      "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
     type: "website",
     siteName: "ImpactAI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ImpactAI — AI Golf Swing Analysis App",
+    title: "ImpactAI — Social Golf & AI Coach",
     description:
-      "Improve your golf swing with AI. Record your swing, get instant feedback, visual analysis, drills, and progress tracking with ImpactAI.",
+      "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
   },
   icons: {
     icon: "/ImpactAI-logo-removebg-preview.png",
@@ -43,7 +46,17 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInitScript = `(function(){try{var t=localStorage.getItem("impactai-theme");if(t==="dark"){document.documentElement.classList.add("dark");}else if(t==="light"){document.documentElement.classList.remove("dark");}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.classList.add("dark");}}catch(e){}})();`;
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#070807" },
+    { media: "(prefers-color-scheme: light)", color: "#f8faf8" },
+  ],
+};
+
+const themeInitScript = `(function(){try{var t=localStorage.getItem("impactai-theme");if(t==="light"){document.documentElement.classList.remove("dark");}else{document.documentElement.classList.add("dark");}}catch(e){document.documentElement.classList.add("dark");}})();`;
 
 export default function RootLayout({
   children,
@@ -51,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+    <html lang="en" className={`dark ${inter.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-background text-foreground">
         <script
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
         />

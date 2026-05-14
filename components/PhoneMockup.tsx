@@ -2,12 +2,17 @@ interface PhoneMockupProps {
   screen: React.ReactNode;
   className?: string;
   tilt?: "left" | "right" | "none";
+  /** Fixed shell width (px); height from 252×497 unless `shellHeight` is set. Omit both for default responsive sizes. */
+  shellWidth?: number;
+  shellHeight?: number;
 }
 
 export default function PhoneMockup({
   screen,
   className = "",
   tilt = "none",
+  shellWidth,
+  shellHeight,
 }: PhoneMockupProps) {
   const tiltClass = {
     left: "-rotate-6",
@@ -15,12 +20,30 @@ export default function PhoneMockup({
     none: "",
   };
 
+  const derivedH =
+    shellWidth != null
+      ? Math.round((shellWidth * 497) / 252)
+      : undefined;
+  const shellH: number | undefined =
+    shellWidth != null ? (shellHeight ?? derivedH) : undefined;
+
   return (
     <div
       className={`relative ${tiltClass[tilt]} ${className} transition-transform duration-500`}
     >
-      {/* Outer shell — dimensions match screenshot aspect ratio (1.973) exactly */}
-      <div className="relative w-[252px] h-[497px] sm:w-[290px] sm:h-[572px] bg-[#0a0a0a] rounded-[2.6rem] shadow-2xl border-[2.5px] border-[#333] overflow-hidden">
+      {/* Outer shell — default 252 / 290; optional fixed shell for rails & grids */}
+      <div
+        className={
+          shellWidth != null
+            ? "relative bg-[#0a0a0a] rounded-[2.6rem] shadow-2xl border-[2.5px] border-[#333] overflow-hidden"
+            : "relative w-[252px] h-[497px] sm:w-[290px] sm:h-[572px] bg-[#0a0a0a] rounded-[2.6rem] shadow-2xl border-[2.5px] border-[#333] overflow-hidden"
+        }
+        style={
+          shellWidth != null && shellH != null
+            ? { width: shellWidth, height: shellH }
+            : undefined
+        }
+      >
 
         {/* Dynamic island notch */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 w-[88px] h-[26px] bg-[#0a0a0a] rounded-full flex items-center justify-center gap-2">

@@ -1,95 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Upload, Sparkles, Trophy } from "lucide-react";
 import {
   cascadeVariants,
   defaultViewport,
   fadeUpSoftVariants,
   fadeUpVariants,
 } from "@/components/motion/scroll-motion";
-import { Video, Cpu, TrendingUp } from "lucide-react";
 
 const steps = [
   {
-    step: "01",
-    icon: Video,
-    title: "Record or Upload Your Swing",
-    description:
-      "Capture your swing from any angle using your phone camera, or upload an existing video. No special equipment needed.",
-    color: "#E8F5E9",
-    iconColor: "#2E7D32",
+    icon: Upload,
+    title: "Upload swings or track practice",
+    body: "Capture rounds, range sessions, or quick swings — keep everything in one place.",
   },
   {
-    step: "02",
-    icon: Cpu,
-    title: "Get Instant AI Analysis",
-    description:
-      "Our AI engine analyzes your swing frame-by-frame — evaluating plane, path, face angle, tempo, and impact position in seconds.",
-    color: "#F0FDF4",
-    iconColor: "#1B5E20",
+    icon: Sparkles,
+    title: "Get AI coaching and personalized recommendations",
+    body: "Chat with your coach, get drills, and see what to work on next based on your game.",
   },
   {
-    step: "03",
-    icon: TrendingUp,
-    title: "Improve With Drills & Feedback",
-    description:
-      "Receive personalized lessons, visual overlays, and targeted drills. Track your improvement over time with every swing.",
-    color: "#DCFCE7",
-    iconColor: "#166534",
+    icon: Trophy,
+    title: "Compete with friends and improve over time",
+    body: "Leaderboards, streaks, and challenges keep you accountable and having fun.",
   },
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-24 bg-background">
-      <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={defaultViewport}
-        variants={cascadeVariants(0.12, 0.04)}
-      >
-        <motion.div variants={fadeUpVariants} className="text-center mb-16">
-          <div className="impact-badge mb-4 mx-auto w-fit">Simple Process</div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            How ImpactAI Works
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            From recording your swing to measurable improvement — the whole
-            coaching loop is right in your pocket.
-          </p>
-        </motion.div>
-
+    <section id="how-it-works" className="border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          variants={cascadeVariants(0.12, 0.08)}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 relative"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={cascadeVariants(0.12, 0.06)}
         >
-          <div className="hidden md:block absolute top-12 left-[22%] right-[22%] h-px bg-gradient-to-r from-emerald-300 via-primary to-emerald-300 dark:from-emerald-800 dark:via-primary dark:to-emerald-800" />
+          <motion.div variants={fadeUpVariants} className="text-center">
+            <p className="section-label mb-3">How it works</p>
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Three steps. One better game.
+            </h2>
+          </motion.div>
 
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUpSoftVariants}
-              className="relative flex flex-col items-center text-center group"
-            >
-              <div
-                className="relative w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-md ring-1 ring-black/5 dark:ring-white/10 group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300"
-                style={{ backgroundColor: step.color }}
+          <div className="relative mt-12 grid gap-10 sm:mt-16 md:mt-20 md:grid-cols-3 md:gap-8">
+            <div className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-brand/0 via-brand/35 to-brand/0 md:block" />
+
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                variants={fadeUpSoftVariants}
+                className="relative flex flex-col items-center text-center"
               >
-                <step.icon size={32} style={{ color: step.iconColor }} />
-                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full gradient-green text-white text-xs font-bold flex items-center justify-center shadow-md">
-                  {i + 1}
+                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/[0.1] bg-[#121512] text-brand shadow-lg ring-4 ring-[#070807]">
+                  <s.icon className="h-7 w-7" strokeWidth={1.5} />
+                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[11px] font-bold text-primary-foreground">
+                    {i + 1}
+                  </span>
                 </div>
-              </div>
-
-              <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+                <h3 className="mt-6 max-w-xs text-base font-semibold text-foreground sm:mt-8 sm:text-lg">
+                  {s.title}
+                </h3>
+                <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                  {s.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

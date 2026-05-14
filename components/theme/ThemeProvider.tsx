@@ -37,13 +37,11 @@ function readStoredTheme(): Theme | null {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>("dark");
 
   useLayoutEffect(() => {
     const stored = readStoredTheme();
-    const resolved: Theme =
-      stored ??
-      (document.documentElement.classList.contains("dark") ? "dark" : "light");
+    const resolved: Theme = stored ?? "dark";
     applyDomTheme(resolved);
     startTransition(() => {
       setThemeState(resolved);
