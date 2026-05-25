@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { AnimatePresence, m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -42,17 +42,12 @@ export default function Navbar() {
               : "mt-0 h-16 max-w-6xl border-b border-transparent bg-transparent px-4 sm:h-[4.25rem] sm:px-6 lg:px-8"
           )}
         >
-          <Link href="/" className="flex min-w-0 items-center gap-2.5 group">
-            <Image
-              src="/ImpactAI-logo-removebg-preview.png"
-              alt="ImpactAI"
-              width={36}
-              height={36}
-              className="h-9 w-9 shrink-0 rounded-xl object-contain ring-1 ring-black/10 transition group-hover:ring-brand/40 dark:ring-white/10"
-            />
-            <span className="truncate text-base font-semibold tracking-tight text-foreground">
-              Impact<span className="text-brand">AI</span>
-            </span>
+          <Link
+            href="/"
+            className="flex min-w-0 items-center transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50"
+            aria-label="Impact Golf home"
+          >
+            <BrandLogo variant="nav" priority />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:gap-10 md:flex">

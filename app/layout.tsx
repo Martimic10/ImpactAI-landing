@@ -42,8 +42,8 @@ export const metadata: Metadata = {
       "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
   },
   icons: {
-    icon: "/ImpactAI-logo-removebg-preview.png",
-    apple: "/ImpactAI-logo-removebg-preview.png",
+    icon: "/impactgolf-logo.png",
+    apple: "/impactgolf-logo.png",
   },
   robots: {
     index: true,

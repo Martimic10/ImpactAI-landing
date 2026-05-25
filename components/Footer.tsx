@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { m } from "framer-motion";
+import { BrandLogo } from "@/components/BrandLogo";
 import { defaultViewport, fadeUpVariants } from "@/components/motion/scroll-motion";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 
@@ -30,17 +30,12 @@ export default function Footer() {
     >
       <div className="mx-auto flex max-w-6xl min-w-0 flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:items-start lg:justify-between lg:px-8">
         <div className="flex flex-col gap-6">
-          <Link href="/" className="flex w-fit items-center gap-2.5">
-            <Image
-              src="/ImpactAI-logo-removebg-preview.png"
-              alt="ImpactAI"
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-xl object-contain ring-1 ring-white/10"
-            />
-            <span className="text-sm font-semibold text-zinc-100">
-              Impact<span className="text-brand">AI</span>
-            </span>
+          <Link
+            href="/"
+            className="w-fit transition hover:opacity-90"
+            aria-label="Impact Golf home"
+          >
+            <BrandLogo variant="footer" />
           </Link>
           <ThemeToggle />
         </div>

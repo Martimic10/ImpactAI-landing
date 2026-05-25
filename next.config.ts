@@ -1,6 +1,14 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import type { NextConfig } from "next";
 
+/** Project dir — avoids picking ~/ when a parent package-lock.json exists */
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: projectRoot,
+  },
   reactCompiler: true,
   images: {
     formats: ["image/avif", "image/webp"],
