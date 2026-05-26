@@ -18,50 +18,47 @@ const reactions = [
 
 export default function SocialCompetitionSection() {
   return (
-    <section id="social" className="relative overflow-hidden border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
-      <div className="pointer-events-none absolute right-0 top-0 h-80 w-80 translate-x-1/3 rounded-full bg-brand/8 blur-[100px]" />
-
-      <div className="mx-auto max-w-6xl min-w-0 px-4 sm:px-6 lg:px-8">
+    <section id="social" className="section-pad border-t border-white/[0.06] bg-black">
+      <div className="mx-auto max-w-6xl min-w-0">
         <m.div
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={cascadeVariants(0.1, 0.04)}
-          className="mx-auto max-w-2xl text-center"
+          className="mx-auto max-w-2xl px-1 text-center"
         >
           <m.p variants={fadeUpVariants} className="section-label mb-3">
             Social
           </m.p>
           <m.h2
             variants={fadeUpVariants}
-            className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-4xl"
           >
             Golf is better with competition.
           </m.h2>
           <m.p
             variants={fadeUpVariants}
-            className="mt-3 text-base text-muted-foreground sm:mt-4 sm:text-lg"
+            className="mt-3 text-base text-zinc-400 sm:mt-4 sm:text-lg"
           >
             Compete with friends, build streaks, and track your improvement together.
           </m.p>
         </m.div>
 
-        <div className="mt-12 grid min-w-0 items-start gap-10 sm:mt-16 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-10 flex flex-col gap-8 sm:mt-14 lg:grid lg:grid-cols-12 lg:items-start lg:gap-12">
           <m.div
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewport}
             variants={fadeUpVariants}
-            className="relative lg:col-span-7"
+            className="phone-shell-max-sm lg:col-span-7"
           >
-            <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand/10 opacity-60 blur-3xl" />
-            <div className="mx-auto w-full max-w-[min(100%,320px)] shrink-0 lg:mx-0">
-              <ImagePhone
-                src="/social-mockup-removebg-preview.png"
-                alt="Social feed and friend competition"
-                fitShell
-              />
-            </div>
+            <ImagePhone
+              src="/social-mockup-removebg-preview.png"
+              alt="Social feed and friend competition"
+              fitShell
+              sizes="(max-width: 640px) min(88vw, 260px), 320px"
+              className="shadow-[0_24px_64px_-24px_rgba(0,0,0,0.75)]"
+            />
           </m.div>
 
           <m.div
@@ -69,32 +66,32 @@ export default function SocialCompetitionSection() {
             whileInView="visible"
             viewport={defaultViewport}
             variants={cascadeVariants(0.1, 0.08)}
-            className="flex flex-col gap-4 lg:col-span-5"
+            className="flex min-w-0 flex-col gap-4 lg:col-span-5"
           >
             {reactions.map((r) => (
               <m.div
                 key={r.user}
                 variants={fadeUpSoftVariants}
-                className="flex gap-4 rounded-2xl border border-white/[0.08] bg-card/90 p-4 shadow-lg transition hover:border-brand/25"
+                className="flex gap-3 rounded-2xl border border-white/[0.08] bg-[#111111] p-4 sm:gap-4 sm:p-5"
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand">
                   <r.icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{r.user}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{r.text}</p>
+                <div className="min-w-0 text-left">
+                  <p className="text-sm font-semibold text-white">{r.user}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-400">{r.text}</p>
                 </div>
               </m.div>
             ))}
 
             <m.div
               variants={fadeUpSoftVariants}
-              className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.06] to-transparent p-5"
+              className="rounded-2xl border border-white/[0.08] bg-[#111111] p-5 text-left"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-brand">
                 Friend activity
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
                 Reactions, comments, and weekly challenges keep the group warm —
                 without losing the premium, calm feel of a serious golf app.
               </p>

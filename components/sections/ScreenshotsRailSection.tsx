@@ -138,7 +138,7 @@ export default function ScreenshotsRailSection() {
   }, []);
 
   return (
-    <section id="screenshots" className="relative overflow-hidden py-16 sm:py-24 lg:py-28">
+    <section id="screenshots" className="relative overflow-hidden bg-black py-16 sm:py-24 lg:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <m.div

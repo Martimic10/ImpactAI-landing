@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { AppleIcon, GooglePlayIcon } from "@/components/icons/StoreIcons";
+import { AppleIcon } from "@/components/icons/StoreIcons";
 
 interface AppStoreButtonsProps {
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
+/** iOS-only store CTA (no Google Play). */
 export default function AppStoreButtons({
   size = "md",
   className = "",
@@ -35,34 +36,18 @@ export default function AppStoreButtons({
   };
 
   return (
-    <div className={`flex flex-wrap gap-3 ${className}`}>
-      {/* App Store */}
+    <div className={className}>
       <Link
-        href="#"
-        aria-label="Coming Soon on the App Store"
-        className={`inline-flex items-center ${sizeClasses[size]} bg-foreground text-background rounded-2xl hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-primary dark:hover:text-primary-foreground`}
+        href="#download"
+        aria-label="Coming soon on the App Store for iOS"
+        className={`inline-flex items-center ${sizeClasses[size]} rounded-2xl bg-white text-black shadow-lg transition-all duration-300 hover:bg-zinc-100 hover:shadow-xl hover:-translate-y-0.5`}
       >
-        <AppleIcon className={`${iconSize[size]} flex-shrink-0 text-background dark:text-zinc-900 group-hover:text-white dark:group-hover:text-primary-foreground`} />
+        <AppleIcon className={`${iconSize[size]} shrink-0`} />
         <div className="flex flex-col text-left leading-tight">
-          <span className={`${textSize[size]} opacity-80 uppercase tracking-wider`}>
-            Coming Soon on the
+          <span className={`${textSize[size]} uppercase tracking-wider opacity-70`}>
+            Coming soon on the
           </span>
           <span className={titleSize[size]}>App Store</span>
-        </div>
-      </Link>
-
-      {/* Google Play */}
-      <Link
-        href="#"
-        aria-label="Coming Soon on Google Play"
-        className={`inline-flex items-center ${sizeClasses[size]} bg-foreground text-background rounded-2xl hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-primary dark:hover:text-primary-foreground`}
-      >
-        <GooglePlayIcon className={`${iconSize[size]} flex-shrink-0`} />
-        <div className="flex flex-col text-left leading-tight">
-          <span className={`${textSize[size]} opacity-80 uppercase tracking-wider`}>
-            Coming Soon on
-          </span>
-          <span className={titleSize[size]}>Google Play</span>
         </div>
       </Link>
     </div>

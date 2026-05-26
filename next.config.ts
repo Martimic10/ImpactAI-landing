@@ -8,7 +8,12 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
+    resolveAlias: {
+      tailwindcss: path.join(projectRoot, "node_modules/tailwindcss"),
+      "tw-animate-css": path.join(projectRoot, "node_modules/tw-animate-css"),
+    },
   },
+  outputFileTracingRoot: projectRoot,
   reactCompiler: true,
   images: {
     formats: ["image/avif", "image/webp"],

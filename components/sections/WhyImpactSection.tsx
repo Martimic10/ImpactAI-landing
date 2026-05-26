@@ -34,7 +34,7 @@ const cards = [
 
 export default function WhyImpactSection() {
   return (
-    <section id="features" className="relative border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
+    <section id="features" className="relative border-t border-white/[0.06] bg-black py-16 sm:py-24 lg:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <m.div

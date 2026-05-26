@@ -1,7 +1,7 @@
 /** Shared easing for scroll / entrance motion */
 export const easeSmooth = [0.22, 1, 0.36, 1] as const;
 
-export const defaultViewport = { once: true, amount: 0.12 as const };
+export const defaultViewport = { once: true, amount: 0.08 as const };
 
 /** Single block: fade + lift */
 export const fadeUpVariants = {

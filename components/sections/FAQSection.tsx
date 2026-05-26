@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Is the app available on iOS?",
-    a: "We’re rolling out on iOS first with Android following closely. Join the list from the download section to know the moment we ship.",
+    a: "Impact Golf is launching on iOS first. Use the Download section to get the app when it’s live on the App Store.",
   },
   {
     q: "Can I upload swings?",
@@ -43,8 +43,8 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="border-t border-white/[0.06] py-16 sm:py-24 lg:py-28">
-      <div className="mx-auto max-w-3xl min-w-0 px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="section-pad border-t border-white/[0.06] bg-black">
+      <div className="mx-auto max-w-3xl min-w-0">
         <m.div
           initial="hidden"
           whileInView="visible"

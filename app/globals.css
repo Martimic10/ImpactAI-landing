@@ -51,6 +51,7 @@
 
 :root {
   --brand: #34e06f;
+  --brand-glow: #4dff85;
   --background: #f8faf8;
   --foreground: #0a0a0a;
   --card: #ffffff;
@@ -85,22 +86,23 @@
   --sidebar-ring: #34e06f;
 }
 
-/* Default product experience: dark charcoal + brand green */
+/* Default: pure black + neon green (matches Impact Golf logo) */
 html.dark {
   color-scheme: dark;
   --brand: #34e06f;
-  --background: #070807;
-  --foreground: #f4f7f5;
-  --card: #101210;
-  --card-foreground: #f4f7f5;
-  --popover: #101210;
-  --popover-foreground: #f4f7f5;
+  --brand-glow: #4dff85;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
   --primary: #34e06f;
   --primary-foreground: #041208;
-  --secondary: #161a17;
-  --secondary-foreground: #f4f7f5;
-  --muted: #1a1f1c;
-  --muted-foreground: #9aa69d;
+  --secondary: #111111;
+  --secondary-foreground: #f4f4f5;
+  --muted: #141414;
+  --muted-foreground: #a1a1aa;
   --accent: #14281c;
   --accent-foreground: #b8f5cf;
   --destructive: oklch(0.577 0.245 27.325);
@@ -127,16 +129,15 @@ html.dark {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-clip;
   }
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans scroll-smooth overflow-x-clip;
     scroll-padding-top: max(5.5rem, calc(env(safe-area-inset-top, 0px) + 4.25rem));
   }
   @media (max-width: 767px) {
-    main > *:not(:first-child) {
-      content-visibility: auto;
-      contain-intrinsic-size: auto min(70vh, 520px);
+    html {
+      scroll-padding-top: max(4.75rem, calc(env(safe-area-inset-top, 0px) + 3.75rem));
     }
   }
   @media (min-width: 768px) {
@@ -200,8 +201,27 @@ html.dark {
   .btn-brand {
     @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-all duration-300 hover:brightness-110 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
   }
+  .btn-hero {
+    @apply inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg transition-all duration-300 hover:bg-zinc-100 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
+  }
   .section-label {
     @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-brand;
+  }
+  .section-pad {
+    @apply px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-28;
+  }
+  .phone-shell-max-sm {
+    --phone-shell-max: 260px;
+  }
+  @media (min-width: 640px) {
+    .phone-shell-max-sm {
+      --phone-shell-max: 300px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .phone-shell-max-sm {
+      --phone-shell-max: 320px;
+    }
   }
   /* iOS home-screen app icon shape (~22.37% corner radius on a square) */
   .ios-app-icon {

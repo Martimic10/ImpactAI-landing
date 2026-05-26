@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { cookies } from "next/headers";
 import "./globals.css";
 import { MotionLazyProvider } from "@/components/motion/MotionLazyProvider";
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,31 +53,22 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#070807" },
-    { media: "(prefers-color-scheme: light)", color: "#f8faf8" },
-  ],
+  themeColor: "#000000",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const cookieVal = cookieStore.get("impactai-theme")?.value;
-  const initialTheme = cookieVal === "light" ? "light" : "dark";
-
   return (
     <html
       lang="en"
-      className={`${initialTheme === "dark" ? "dark " : ""}${inter.variable} h-full antialiased`}
+      className={`dark ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-background text-foreground">
-        <ThemeProvider initialTheme={initialTheme}>
-          <MotionLazyProvider>{children}</MotionLazyProvider>
-        </ThemeProvider>
+      <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-black text-foreground">
+        <MotionLazyProvider>{children}</MotionLazyProvider>
       </body>
     </html>
   );

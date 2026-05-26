@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 
@@ -12,12 +13,8 @@ function SectionFallback() {
   );
 }
 
-const WhyImpactSection = dynamic(
-  () => import("@/components/sections/WhyImpactSection"),
-  { loading: () => <SectionFallback /> }
-);
-const ScreenshotsRailSection = dynamic(
-  () => import("@/components/sections/ScreenshotsRailSection"),
+const BenefitsSection = dynamic(
+  () => import("@/components/sections/BenefitsSection"),
   { loading: () => <SectionFallback /> }
 );
 const HowItWorksSection = dynamic(
@@ -40,18 +37,13 @@ const FinalCTASection = dynamic(
   () => import("@/components/sections/FinalCTASection"),
   { loading: () => <SectionFallback /> }
 );
-const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <SectionFallback />,
-});
-
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-0 min-w-0 flex-1 overflow-x-clip bg-background text-foreground">
+      <main className="min-h-0 min-w-0 flex-1 overflow-x-clip bg-black text-foreground">
         <HeroSection />
-        <WhyImpactSection />
-        <ScreenshotsRailSection />
+        <BenefitsSection />
         <HowItWorksSection />
         <AICoachSection />
         <SocialCompetitionSection />
