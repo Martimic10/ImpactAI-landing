@@ -1,0 +1,5 @@
+/**
+ * Impact Golf brand assets — keep favicon + in-app logo in sync.
+ * Tab icons: `app/icon.png` and `app/apple-icon.png` (generated from this file).
+ */
+export const BRAND_LOGO_SRC = "/impactgolf-logo.png" as const;

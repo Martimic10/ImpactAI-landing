@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { BRAND_LOGO_SRC } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
-export const BRAND_LOGO_SRC = "/impactgolf-logo.png";
+export { BRAND_LOGO_SRC };
 export const BRAND_LOGO_ALT = "Impact Golf";
 
 type BrandLogoProps = {

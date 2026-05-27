@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { MotionLazyProvider } from "@/components/motion/MotionLazyProvider";
+import { BRAND_LOGO_SRC } from "@/lib/brand";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,8 +41,9 @@ export const metadata: Metadata = {
       "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
   },
   icons: {
-    icon: "/impactgolf-logo.png",
-    apple: "/impactgolf-logo.png",
+    icon: [{ url: BRAND_LOGO_SRC, type: "image/png" }],
+    apple: [{ url: BRAND_LOGO_SRC, type: "image/png" }],
+    shortcut: BRAND_LOGO_SRC,
   },
   robots: {
     index: true,
