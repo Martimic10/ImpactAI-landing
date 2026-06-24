@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import AppStoreButtons from "@/components/AppStoreButtons";
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { AnimatePresence, m } from "framer-motion";
@@ -8,9 +9,9 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Benefits", href: "#benefits" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Features", href: "#features" },
+  { label: "Groups", href: "#groups" },
+  { label: "Download", href: "#download" },
 ];
 
 export default function Navbar() {
@@ -51,7 +52,7 @@ export default function Navbar() {
         className={cn(
           "relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 transition-all duration-300 sm:h-[4.25rem] sm:px-6 lg:px-8",
           scrolled &&
-            "mx-3 mt-2 max-w-[min(52rem,calc(100vw-1.5rem))] rounded-full border border-white/10 bg-black/80 px-3 shadow-lg backdrop-blur-xl sm:mx-auto sm:mt-4 sm:px-4"
+            "mx-3 mt-2 max-w-[min(52rem,calc(100vw-1.5rem))] rounded-full border border-border bg-card px-3 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] sm:mx-auto sm:mt-4 sm:px-4"
         )}
       >
         <Link
@@ -67,24 +68,21 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-zinc-400 transition hover:text-white"
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <Link
-          href="#download"
-          className="relative z-10 hidden items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-lg transition hover:bg-zinc-100 md:inline-flex"
-        >
-          Download
-        </Link>
+        <div className="relative z-10 hidden md:block">
+          <AppStoreButtons size="sm" />
+        </div>
 
         <div ref={menuRef} className="relative z-20 md:hidden">
           <button
             type="button"
-            className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white text-black shadow-[0_0_24px_-4px_rgba(255,255,255,0.35)] transition hover:bg-zinc-100 active:scale-[0.98]"
+            className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand text-primary-foreground transition hover:brightness-110 active:scale-[0.98]"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-haspopup="true"
@@ -104,7 +102,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -6, scale: 0.97 }}
                 transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute right-0 top-[calc(100%+0.625rem)] w-[min(17.5rem,calc(100vw-2rem))] origin-top-right rounded-2xl border border-white/[0.12] bg-black p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_20px_50px_-12px_rgba(255,255,255,0.18),0_24px_64px_-16px_rgba(0,0,0,0.9)]"
+                className="absolute right-0 top-[calc(100%+0.625rem)] w-[min(17.5rem,calc(100vw-2rem))] origin-top-right rounded-2xl border border-border bg-card p-5 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.15)]"
                 aria-label="Mobile navigation"
               >
                 <ul className="flex flex-col gap-0.5">
@@ -113,7 +111,7 @@ export default function Navbar() {
                       <Link
                         href={l.href}
                         onClick={() => setOpen(false)}
-                        className="block rounded-lg px-1 py-2.5 text-[15px] font-medium text-white transition hover:text-zinc-300"
+                        className="block rounded-lg px-1 py-2.5 text-[15px] font-medium text-foreground transition hover:text-muted-foreground"
                       >
                         {l.label}
                       </Link>
@@ -121,13 +119,12 @@ export default function Navbar() {
                   ))}
                 </ul>
 
-                <Link
-                  href="#download"
+                <AppStoreButtons
+                  size="md"
+                  fullWidth
+                  className="mt-5"
                   onClick={() => setOpen(false)}
-                  className="mt-5 flex w-full items-center justify-center rounded-xl bg-white px-4 py-3 text-sm font-semibold text-black transition hover:bg-zinc-100 active:scale-[0.99]"
-                >
-                  Download
-                </Link>
+                />
               </m.nav>
             ) : null}
           </AnimatePresence>

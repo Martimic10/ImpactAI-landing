@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { MotionLazyProvider } from "@/components/motion/MotionLazyProvider";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { BRAND_LOGO_SRC } from "@/lib/brand";
 
 const inter = Inter({
@@ -14,31 +15,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ImpactAI — Social Golf & AI Coach",
+  title: "Impact Golf — Compete With Your Golf Crew",
   description:
-    "The AI-powered social app for golfers. Upload swings, track progress, compete with friends on leaderboards, and get personalized coaching from your AI golf coach.",
+    "The social golf competition app. Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
   keywords: [
     "golf app",
     "social golf",
     "golf leaderboard",
-    "AI golf coach",
-    "golf improvement",
+    "golf competition",
     "golf friends",
-    "swing upload",
-    "golf progress tracking",
+    "golf groups",
+    "golf challenges",
+    "golf scoring",
   ],
   openGraph: {
-    title: "ImpactAI — Social Golf & AI Coach",
+    title: "Impact Golf — Compete With Your Golf Crew",
     description:
-      "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
+      "Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
     type: "website",
-    siteName: "ImpactAI",
+    siteName: "Impact Golf",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ImpactAI — Social Golf & AI Coach",
+    title: "Impact Golf — Compete With Your Golf Crew",
     description:
-      "Upload swings, track progress, compete with friends, and get personalized AI golf coaching — all in one modern app.",
+      "Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
   },
   icons: {
     icon: [{ url: BRAND_LOGO_SRC, type: "image/png" }],
@@ -55,7 +56,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#000000",
+  themeColor: "#f8faf8",
 };
 
 export default function RootLayout({
@@ -66,11 +67,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${inter.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-black text-foreground">
-        <MotionLazyProvider>{children}</MotionLazyProvider>
+      <body className="flex min-h-dvh min-h-[100dvh] flex-col bg-background text-foreground">
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);})();",
+          }}
+        />
+        <MotionLazyProvider>
+          <ScrollToTop />
+          {children}
+        </MotionLazyProvider>
       </body>
     </html>
   );

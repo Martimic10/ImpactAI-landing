@@ -1,35 +1,50 @@
 "use client";
 
-import { m } from "framer-motion";
-import { Upload, Sparkles, Trophy } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { m, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 import {
   cascadeVariants,
   defaultViewport,
-  fadeUpSoftVariants,
   fadeUpVariants,
 } from "@/components/motion/scroll-motion";
 
-const steps = [
+const tabs = [
   {
-    icon: Upload,
-    title: "Upload swings or track practice",
-    body: "Capture rounds, range sessions, or quick swings — keep everything in one place.",
+    id: "crew",
+    label: "Create Crew",
+    description:
+      "Invite your regular foursome and set up your golf group in minutes.",
+    mockup: "/social-mockup-removebg-preview.png",
+    alt: "Create your golf group",
   },
   {
-    icon: Sparkles,
-    title: "Get AI coaching and personalized recommendations",
-    body: "Chat with your coach, get drills, and see what to work on next based on your game.",
+    id: "round",
+    label: "Live Round",
+    description:
+      "Track scores live during the round — every hole updates in real time.",
+    mockup: "/results-mockup1-removebg-preview.png",
+    alt: "Live score tracking during a round",
   },
   {
-    icon: Trophy,
-    title: "Compete with friends and improve over time",
-    body: "Leaderboards, streaks, and challenges keep you accountable and having fun.",
+    id: "compete",
+    label: "Compete",
+    description:
+      "See standings, achievements, and challenge winners when the round ends.",
+    mockup: "/friends-mockup-removebg-preview.png",
+    alt: "Group leaderboard and standings",
   },
-];
+] as const;
+
+type TabId = (typeof tabs)[number]["id"];
 
 export default function HowItWorksSection() {
+  const [active, setActive] = useState<TabId>(tabs[0].id);
+  const activeTab = tabs.find((t) => t.id === active) ?? tabs[0];
+
   return (
-    <section id="how-it-works" className="section-pad border-t border-white/[0.06] bg-black">
+    <section id="how-it-works" className="section-pad bg-background">
       <div className="mx-auto max-w-6xl min-w-0">
         <m.div
           initial="hidden"
@@ -39,35 +54,86 @@ export default function HowItWorksSection() {
         >
           <m.div variants={fadeUpVariants} className="px-1 text-center">
             <p className="section-label mb-3">How it works</p>
-            <h2 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-4xl">
-              Three steps. One better game.
+            <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Every round, a new competition.
             </h2>
           </m.div>
 
-          <div className="relative mt-10 flex flex-col gap-10 sm:mt-14 md:mt-16 md:grid md:grid-cols-3 md:gap-8">
-            <div className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-brand/0 via-brand/35 to-brand/0 md:block" />
-
-            {steps.map((s, i) => (
-              <m.div
-                key={s.title}
-                variants={fadeUpSoftVariants}
-                className="relative flex flex-col items-center text-center"
+          <m.div variants={fadeUpVariants} className="mt-12 sm:mt-16">
+            <div className="flex justify-center px-2">
+              <div
+                className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-full bg-foreground p-1.5 shadow-lg sm:flex-nowrap sm:gap-0"
+                role="tablist"
+                aria-label="How Impact Golf works"
               >
-                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.1] bg-[#121512] text-brand shadow-lg ring-4 ring-black sm:h-16 sm:w-16">
-                  <s.icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.5} />
-                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[11px] font-bold text-primary-foreground">
-                    {i + 1}
-                  </span>
-                </div>
-                <h3 className="mt-5 max-w-xs text-base font-semibold text-white sm:mt-6 sm:text-lg">
-                  {s.title}
-                </h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-zinc-400 sm:mt-3">
-                  {s.body}
-                </p>
-              </m.div>
-            ))}
-          </div>
+                {tabs.map((tab) => {
+                  const isActive = active === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-controls="how-it-works-panel"
+                      id={`how-it-works-tab-${tab.id}`}
+                      onClick={() => setActive(tab.id)}
+                      className={cn(
+                        "rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-200 sm:px-6",
+                        isActive
+                          ? "bg-card text-foreground shadow-sm"
+                          : "text-background/65 hover:text-background"
+                      )}
+                    >
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="mt-6 min-h-[3.5rem] px-4 text-center sm:mt-8">
+              <AnimatePresence mode="wait">
+                <m.p
+                  key={activeTab.id}
+                  id="how-it-works-panel"
+                  role="tabpanel"
+                  aria-labelledby={`how-it-works-tab-${activeTab.id}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.22 }}
+                  className="mx-auto max-w-lg text-base text-muted-foreground sm:text-lg"
+                >
+                  {activeTab.description}
+                </m.p>
+              </AnimatePresence>
+            </div>
+
+            <div className="relative mx-auto mt-10 w-full max-w-[min(72vw,280px)] sm:mt-12 sm:max-w-[300px] lg:max-w-[320px]">
+              <div className="relative aspect-[290/572] w-full">
+                <AnimatePresence mode="wait">
+                  <m.div
+                    key={activeTab.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={activeTab.mockup}
+                      alt={activeTab.alt}
+                      fill
+                      sizes="(max-width: 640px) 72vw, 320px"
+                      className="select-none object-contain object-center mix-blend-multiply drop-shadow-[0_20px_44px_rgba(0,0,0,0.14)]"
+                      priority={activeTab.id === tabs[0].id}
+                      draggable={false}
+                    />
+                  </m.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </m.div>
         </m.div>
       </div>
     </section>

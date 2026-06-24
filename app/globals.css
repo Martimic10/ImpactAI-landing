@@ -50,6 +50,7 @@
 }
 
 :root {
+  color-scheme: light;
   --brand: #34e06f;
   --brand-glow: #4dff85;
   --background: #f8faf8;
@@ -209,6 +210,38 @@ html.dark {
   }
   .section-pad {
     @apply px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-28;
+  }
+  .bg-charcoal {
+    @apply bg-muted;
+  }
+  .bg-charcoal-card {
+    @apply border border-border bg-card;
+  }
+  .card-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .card-lift:hover {
+    @apply -translate-y-1 border-border shadow-[0_20px_48px_-16px_rgba(52,224,111,0.15)];
+  }
+  .btn-beta {
+    @apply inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_32px_-8px_rgba(52,224,111,0.4)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_40px_-6px_rgba(52,224,111,0.5)] hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-brand/30 hover:bg-accent hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(52, 224, 111, 0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 80% 60%, rgba(52, 224, 111, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #f0faf4 0%, #f8faf8 100%);
+  }
+  .cta-gradient {
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(52, 224, 111, 0.16) 0%, transparent 60%),
+      linear-gradient(180deg, #eef8f1 0%, #f8faf8 100%);
+  }
+  .stat-value {
+    @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl;
   }
   .phone-shell-max-sm {
     --phone-shell-max: 260px;

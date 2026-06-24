@@ -13,42 +13,48 @@ function SectionFallback() {
   );
 }
 
-const BenefitsSection = dynamic(
-  () => import("@/components/sections/BenefitsSection"),
+const SocialProofSection = dynamic(
+  () => import("@/components/sections/SocialProofSection"),
   { loading: () => <SectionFallback /> }
 );
 const HowItWorksSection = dynamic(
   () => import("@/components/sections/HowItWorksSection"),
   { loading: () => <SectionFallback /> }
 );
-const AICoachSection = dynamic(
-  () => import("@/components/sections/AICoachSection"),
+const FeaturesSection = dynamic(
+  () => import("@/components/sections/FeaturesSection"),
   { loading: () => <SectionFallback /> }
 );
-const SocialCompetitionSection = dynamic(
-  () => import("@/components/sections/SocialCompetitionSection"),
+const GroupsSection = dynamic(
+  () => import("@/components/sections/GroupsSection"),
+  { loading: () => <SectionFallback /> }
+);
+const ScreenshotsRailSection = dynamic(
+  () => import("@/components/sections/ScreenshotsRailSection"),
+  { loading: () => <SectionFallback /> }
+);
+const PricingSection = dynamic(
+  () => import("@/components/sections/PricingSection"),
   { loading: () => <SectionFallback /> }
 );
 const FAQSection = dynamic(
   () => import("@/components/sections/FAQSection"),
   { loading: () => <SectionFallback /> }
 );
-const FinalCTASection = dynamic(
-  () => import("@/components/sections/FinalCTASection"),
-  { loading: () => <SectionFallback /> }
-);
+
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-0 min-w-0 flex-1 overflow-x-clip bg-black text-foreground">
+      <main className="min-h-0 min-w-0 flex-1 overflow-x-clip bg-background text-foreground">
         <HeroSection />
-        <BenefitsSection />
+        <SocialProofSection />
         <HowItWorksSection />
-        <AICoachSection />
-        <SocialCompetitionSection />
+        <FeaturesSection />
+        <GroupsSection />
+        <ScreenshotsRailSection />
+        <PricingSection />
         <FAQSection />
-        <FinalCTASection />
       </main>
       <Footer />
     </>

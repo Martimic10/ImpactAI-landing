@@ -12,68 +12,62 @@ import {
 
 const shots = [
   {
-    key: "social",
-    label: "Social",
+    key: "home",
+    label: "Home",
     node: (
       <ImagePhone
         src="/social-mockup-removebg-preview.png"
-        alt="Social feed and activity"
+        alt="Home screen"
         fitShell
+        shadow="soft"
       />
     ),
   },
   {
-    key: "coach",
-    label: "AI Coach",
-    node: (
-      <ImagePhone
-        src="/coachai-mockup-removebg-preview.png"
-        alt="AI golf coach chat"
-        fitShell
-      />
-    ),
-  },
-  {
-    key: "results",
-    label: "Results",
+    key: "live-round",
+    label: "Live Round",
     node: (
       <ImagePhone
         src="/results-mockup1-removebg-preview.png"
-        alt="Swing analysis results"
+        alt="Live round scoring"
         fitShell
+        shadow="soft"
       />
     ),
   },
   {
-    key: "progress",
-    label: "Progress",
-    node: (
-      <ImagePhone
-        src="/progress-mockup1-removebg-preview.png"
-        alt="Training progress over time"
-        fitShell
-      />
-    ),
-  },
-  {
-    key: "upload",
-    label: "Upload",
-    node: (
-      <ImagePhone
-        src="/Analyze-screen-removebg-preview.png"
-        alt="Upload swing"
-        fitShell
-      />
-    ),
-  },
-  {
-    key: "friends",
-    label: "Friends",
+    key: "leaderboard",
+    label: "Leaderboard",
     node: (
       <ImagePhone
         src="/friends-mockup-removebg-preview.png"
-        alt="Friends and compare"
+        alt="Group leaderboard"
         fitShell
+        shadow="soft"
+      />
+    ),
+  },
+  {
+    key: "profile",
+    label: "Profile",
+    node: (
+      <ImagePhone
+        src="/progress-mockup1-removebg-preview.png"
+        alt="Player profile and stats"
+        fitShell
+        shadow="soft"
+      />
+    ),
+  },
+  {
+    key: "achievements",
+    label: "Achievements",
+    node: (
+      <ImagePhone
+        src="/social-mockup-removebg-preview.png"
+        alt="Achievements and milestones"
+        fitShell
+        shadow="soft"
       />
     ),
   },
@@ -84,7 +78,7 @@ export default function ScreenshotsRailSection() {
   const dragRef = useRef({ active: false, startX: 0, startScroll: 0 });
 
   const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.pointerType === "touch") return;
     const el = railRef.current;
     if (!el) return;
     dragRef.current = {
@@ -138,8 +132,7 @@ export default function ScreenshotsRailSection() {
   }, []);
 
   return (
-    <section id="screenshots" className="relative overflow-hidden bg-black py-16 sm:py-24 lg:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+    <section id="screenshots" className="relative bg-background py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <m.div
           initial="hidden"
@@ -149,55 +142,50 @@ export default function ScreenshotsRailSection() {
           className="text-center"
         >
           <m.div variants={fadeUpVariants}>
-            <p className="section-label mb-3">Screenshots</p>
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Built for modern golfers.
+            <p className="section-label mb-3">App Screenshots</p>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Built for competition.
             </h2>
-            <p className="mx-auto mt-3 max-w-xl px-1 text-sm text-muted-foreground sm:mt-4 sm:text-base">
-              Swipe on your phone, or on desktop{" "}
-              <span className="whitespace-nowrap text-foreground/90">drag</span> /{" "}
-              <span className="whitespace-nowrap text-foreground/90">Shift + scroll</span>{" "}
-              sideways to see every screen.
-            </p>
           </m.div>
         </m.div>
       </div>
 
       <m.div
-        className="mt-14"
+        className="mt-14 w-full"
         initial="hidden"
         whileInView="visible"
         viewport={defaultViewport}
         variants={cascadeVariants(0.12, 0.08)}
       >
-        <div className="mx-auto max-w-6xl min-w-0">
-          <div
-            ref={railRef}
-            role="region"
-            aria-label="App screenshots. Drag horizontally or shift-scroll to browse."
-            tabIndex={0}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={endPointerDrag}
-            onPointerCancel={endPointerDrag}
-            className="-mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-visible scroll-smooth pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-8 pt-2 touch-pan-x sm:-mx-6 sm:gap-6 sm:pl-6 sm:pr-6 lg:-mx-8 lg:pl-8 lg:pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [@media(pointer:fine)]:cursor-grab [@media(pointer:fine)]:select-none"
-          >
-            {shots.map((s) => (
-              <m.div
-                key={s.key}
-                variants={fadeUpSoftVariants}
-                className="group relative w-[min(calc(100vw-2.5rem),320px)] shrink-0 snap-center sm:w-[320px]"
-              >
-                <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-brand/0 opacity-0 blur-2xl transition duration-500 group-hover:bg-brand/15 group-hover:opacity-100" />
-                <p className="mb-3 text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  {s.label}
-                </p>
-                <div className="flex min-h-[min(74svh,560px)] w-full items-center justify-center pb-2 sm:min-h-[min(80svh,640px)] lg:min-h-[640px]">
-                  {s.node}
-                </div>
-              </m.div>
-            ))}
-          </div>
+        <div
+          ref={railRef}
+          role="region"
+          aria-label="App screenshots"
+          tabIndex={0}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endPointerDrag}
+          onPointerCancel={endPointerDrag}
+          className="flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-visible scroll-smooth overscroll-x-contain py-2 pl-4 pr-4 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 [@media(pointer:fine)]:cursor-grab [@media(pointer:fine)]:select-none [@media(pointer:fine)]:touch-none"
+          style={{
+            scrollPaddingLeft: "1rem",
+            scrollPaddingRight: "1rem",
+          }}
+        >
+          {shots.map((s) => (
+            <m.div
+              key={s.key}
+              variants={fadeUpSoftVariants}
+              className="w-[min(82vw,300px)] shrink-0 snap-start sm:w-[300px] lg:w-[320px]"
+            >
+              <p className="mb-3 text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                {s.label}
+              </p>
+              <div className="flex w-full items-center justify-center pb-2">
+                {s.node}
+              </div>
+            </m.div>
+          ))}
         </div>
       </m.div>
     </section>

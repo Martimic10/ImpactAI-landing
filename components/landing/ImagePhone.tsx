@@ -19,11 +19,23 @@ type ImagePhoneProps = {
   fitShell?: boolean;
   /** Hero layout: no clip mask so full PNGs show. */
   bare?: boolean;
+  /** Skip multiply blend (e.g. horizontal rails where matte reads as white bars). */
+  noBlend?: boolean;
+  /** Shadow intensity — soft/none for dense rails to avoid gray halos. */
+  shadow?: "default" | "soft" | "none";
 };
 
-/** No ring / dark mat: only soft depth so mockups read as floating screenshots. */
-const mockupWrap =
-  "relative overflow-hidden rounded-[2.75rem] bg-transparent shadow-[0_28px_64px_-32px_rgba(0,0,0,0.55)]";
+/** PNGs include device chrome — multiply knocks out light mattes on page bg. */
+const mockupImageCore =
+  "select-none object-contain object-center mix-blend-multiply";
+
+const mockupShadowClass = {
+  default: "drop-shadow-[0_20px_44px_rgba(0,0,0,0.14)]",
+  soft: "drop-shadow-[0_16px_36px_rgba(0,0,0,0.07)]",
+  none: "",
+} as const;
+
+const mockupWrap = "relative bg-transparent";
 const mockupWrapBare = "relative bg-transparent";
 
 const defaultFitSizes =
@@ -39,7 +51,14 @@ export function ImagePhone({
   sizes,
   fitShell,
   bare,
+  noBlend,
+  shadow = "default",
 }: ImagePhoneProps) {
+  const imageClass = cn(
+    mockupImageCore,
+    mockupShadowClass[shadow],
+    noBlend && "mix-blend-normal"
+  );
   const wrapClass = bare ? mockupWrapBare : mockupWrap;
   if (fitShell) {
     const resolvedSizes = sizes ?? defaultFitSizes;
@@ -57,7 +76,7 @@ export function ImagePhone({
             alt={alt}
             fill
             sizes={resolvedSizes}
-            className="select-none object-contain object-center"
+            className={imageClass}
             priority={priority}
             draggable={false}
           />
@@ -77,7 +96,7 @@ export function ImagePhone({
         width={width}
         height={height}
         sizes={resolvedSizes}
-        className="h-auto w-full select-none"
+        className={cn(imageClass, "h-auto w-full")}
         priority={priority}
         draggable={false}
       />

@@ -16,35 +16,35 @@ import {
 
 const faqs = [
   {
-    q: "What is ImpactAI?",
-    a: "ImpactAI is a social golf improvement app. Upload swings, track progress, compete on leaderboards with friends, and chat with an AI golf coach for personalized guidance.",
-  },
-  {
-    q: "Does the app use AI?",
-    a: "Yes. AI powers the coach chat, lightweight swing feedback, and personalized recommendations — always in service of helping you enjoy the game more, not overwhelming you with data.",
+    q: "What is Impact Golf?",
+    a: "Impact Golf is a social golf competition app. Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard every week.",
   },
   {
     q: "Can I compete with friends?",
-    a: "Absolutely. Leaderboards, streaks, and challenges are built for small groups so you can stay motivated together.",
+    a: "Yes. Leaderboards, weekly rankings, and in-round challenges are built for foursomes, friend groups, and golf leagues.",
+  },
+  {
+    q: "How do groups work?",
+    a: "Create a crew, invite your regular playing partners, and every round updates your group standings. See who's on top and who's chasing.",
   },
   {
     q: "Is the app available on iOS?",
-    a: "Impact Golf is launching on iOS first. Use the Download section to get the app when it’s live on the App Store.",
+    a: "Impact Golf is launching on iOS first. Tap Download for iPhone to get it when it's live on the App Store.",
   },
   {
-    q: "Can I upload swings?",
-    a: "Yes. Upload from the range or course, review playback, and keep a timeline of how your game evolves.",
+    q: "How do challenges work?",
+    a: "During a round, your group can run side competitions like longest drive or closest to the pin. Winners are tracked automatically.",
   },
   {
     q: "Is there a free version?",
-    a: "You’ll be able to start free with core tracking and social features, with optional upgrades for deeper coaching and uploads.",
+    a: "Yes. Start free with unlimited rounds, groups, leaderboards, and challenges. Pro adds advanced stats, seasons, and premium game modes.",
   },
 ];
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="section-pad border-t border-white/[0.06] bg-black">
-      <div className="mx-auto max-w-3xl min-w-0">
+    <section id="faq" className="section-pad bg-background">
+      <div className="mx-auto max-w-3xl min-w-0 px-4 sm:px-6 lg:px-8">
         <m.div
           initial="hidden"
           whileInView="visible"
@@ -53,7 +53,7 @@ export default function FAQSection() {
         >
           <m.div variants={fadeUpVariants} className="text-center">
             <p className="section-label mb-3">FAQ</p>
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
               Questions, answered.
             </h2>
           </m.div>
@@ -64,7 +64,7 @@ export default function FAQSection() {
                 <m.div key={item.q} variants={fadeUpSoftVariants}>
                   <AccordionItem
                     value={`faq-${i}`}
-                    className="overflow-hidden rounded-2xl border border-white/[0.08] bg-card/60 px-1 shadow-sm transition-colors hover:border-white/[0.12]"
+                    className="overflow-hidden rounded-2xl border border-border bg-card px-1 shadow-sm transition-colors hover:border-brand/25"
                   >
                     <AccordionTrigger className="min-h-[3.25rem] items-center px-4 py-4 text-left text-[15px] font-medium leading-snug text-foreground hover:text-brand hover:no-underline sm:min-h-0 sm:items-start sm:px-5 sm:text-base">
                       {item.q}

@@ -3,3 +3,4 @@
  * Tab icons: `app/icon.png` and `app/apple-icon.png` (generated from this file).
  */
 export const BRAND_LOGO_SRC = "/impactgolf-logo.png" as const;
+export const HERO_BACKGROUND_SRC = "/impact-hero-background.png" as const;

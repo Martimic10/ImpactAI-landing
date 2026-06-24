@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
+import { Mail } from "lucide-react";
+import AppStoreButtons from "@/components/AppStoreButtons";
+import { HeroBackground } from "@/components/landing/HeroBackground";
 
 const navLinks = [
-  { label: "Benefits", href: "#benefits" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Download", href: "#download" },
+  { label: "Features", href: "/#features" },
+  { label: "Groups", href: "/#groups" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
 ];
 
 const socials = [
@@ -27,88 +29,59 @@ const socials = [
       </svg>
     ),
   },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/@impactaigolf",
-    icon: (
-      <svg className="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-      </svg>
-    ),
-  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-black pb-[max(2rem,env(safe-area-inset-bottom,0px))] pt-14 sm:pt-16">
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <Link
-          href="/"
-          className="inline-flex flex-col items-center gap-3 transition hover:opacity-90"
-          aria-label="Impact Golf home"
-        >
-          <BrandLogo variant="footer" />
-          <span className="text-xl font-semibold tracking-tight text-white">
-            Impact Golf
-          </span>
-        </Link>
+    <footer id="download" className="relative isolate overflow-hidden text-white">
+      <HeroBackground variant="footer" />
 
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-zinc-400">
-          Empower your golf game with social swings, AI coaching, and friends who
-          keep you accountable.
-        </p>
+      <div className="relative z-10">
+        <section className="px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28">
+          <div className="mx-auto max-w-2xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
+              Ready For Your Next Round?
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-base text-white/85 sm:text-lg">
+              Bring your golf group to the app built for competition.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <AppStoreButtons size="lg" />
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="mailto:hello@impactai.golf"
-          className="mt-6 inline-flex max-w-full items-center justify-center gap-2.5 rounded-2xl border border-white/[0.08] bg-[#111111] px-4 py-3 text-sm text-zinc-200 transition hover:border-white/[0.14] hover:bg-[#161616] sm:px-5"
-        >
-          <svg
-            className="size-4 shrink-0 text-white"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
+        <div className="mx-auto max-w-6xl border-t border-white/20 px-4 sm:px-6 lg:px-8" />
+
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom,0px))] text-sm text-white/85 sm:flex-row sm:justify-between sm:gap-4 sm:px-6 sm:py-10 lg:px-8">
+          <p className="order-2 text-center sm:order-1 sm:text-left">
+            © {new Date().getFullYear()} Impact Golf. All rights reserved.
+          </p>
+
+          <nav
+            className="order-1 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:order-2"
+            aria-label="Footer"
           >
-            <rect width="20" height="16" x="2" y="4" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
-          <span className="break-all sm:break-normal">hello@impactai.golf</span>
-        </a>
-
-        <nav
-          className="mt-8 flex flex-col items-stretch gap-0.5 text-sm text-zinc-400 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-2 sm:gap-y-2"
-          aria-label="Footer"
-        >
-          {navLinks.map((link, index) => (
-            <span
-              key={link.href}
-              className="inline-flex items-center justify-center gap-2 sm:justify-start"
-            >
-              {index > 0 ? (
-                <span className="hidden text-zinc-600 select-none sm:inline" aria-hidden>
-                  ·
-                </span>
-              ) : null}
+            {navLinks.map((link) => (
               <Link
+                key={link.href + link.label}
                 href={link.href}
-                className="flex min-h-11 items-center justify-center rounded-lg px-3 py-2 transition hover:bg-white/[0.04] hover:text-white sm:min-h-0 sm:rounded-none sm:p-0 sm:hover:bg-transparent"
+                className="transition hover:text-white"
               >
                 {link.label}
               </Link>
-            </span>
-          ))}
-        </nav>
+            ))}
+          </nav>
 
-        <div className="mt-10 border-t border-white/[0.08] pt-6">
-          <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between sm:gap-4">
-            <p className="order-2 text-xs text-zinc-500 sm:order-1">
-              © {new Date().getFullYear()} Impact Golf. All rights reserved.
-            </p>
-
-            <div className="order-1 flex items-center gap-2 sm:order-2">
+          <div className="order-3 flex flex-col items-center gap-3 sm:items-end">
+            <a
+              href="mailto:hello@impactai.golf"
+              className="inline-flex items-center gap-2 transition hover:text-white"
+            >
+              <Mail className="size-4 shrink-0" strokeWidth={1.75} aria-hidden />
+              <span>hello@impactai.golf</span>
+            </a>
+            <div className="flex items-center gap-2">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -116,21 +89,15 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex size-9 items-center justify-center rounded-lg border border-white/[0.08] bg-[#111111] text-white transition hover:border-white/[0.14] hover:bg-[#161616]"
+                  className="flex size-9 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition hover:border-white/40 hover:bg-white/20"
                 >
                   {s.icon}
                 </a>
               ))}
             </div>
-
-            <Link
-              href="#"
-              className="order-3 text-xs text-zinc-500 transition hover:text-zinc-300"
-            >
-              Privacy Policy
-            </Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

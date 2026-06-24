@@ -30,7 +30,7 @@ export function BrandLogo({
   return (
     <span
       className={cn(
-        "ios-app-icon relative inline-flex shrink-0 overflow-hidden bg-black",
+        "ios-app-icon relative inline-flex shrink-0 overflow-hidden bg-white",
         variantClass[variant],
         className
       )}
