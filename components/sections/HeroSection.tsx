@@ -5,6 +5,7 @@ import Link from "next/link";
 import { m } from "framer-motion";
 import { ImagePhone } from "@/components/landing/ImagePhone";
 import { HeroBackground } from "@/components/landing/HeroBackground";
+import { deviceMockups } from "@/lib/mockups";
 
 export default function HeroSection() {
   return (
@@ -43,8 +44,8 @@ export default function HeroSection() {
             <div className="pointer-events-none absolute -inset-8 rounded-full bg-brand/10 blur-3xl" aria-hidden />
             <ImagePhone
               bare
-              src="/friends-mockup-removebg-preview.png"
-              alt="Live leaderboard and group standings"
+              src={deviceMockups.home}
+              alt="Impact Golf home screen with live rounds and stats"
               priority
               sizes="(max-width: 640px) 72vw, 320px"
               className="relative z-10"

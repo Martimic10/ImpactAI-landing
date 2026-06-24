@@ -9,69 +9,7 @@ import {
   fadeUpSoftVariants,
   fadeUpVariants,
 } from "@/components/motion/scroll-motion";
-
-const shots = [
-  {
-    key: "home",
-    label: "Home",
-    node: (
-      <ImagePhone
-        src="/social-mockup-removebg-preview.png"
-        alt="Home screen"
-        fitShell
-        shadow="soft"
-      />
-    ),
-  },
-  {
-    key: "live-round",
-    label: "Live Round",
-    node: (
-      <ImagePhone
-        src="/results-mockup1-removebg-preview.png"
-        alt="Live round scoring"
-        fitShell
-        shadow="soft"
-      />
-    ),
-  },
-  {
-    key: "leaderboard",
-    label: "Leaderboard",
-    node: (
-      <ImagePhone
-        src="/friends-mockup-removebg-preview.png"
-        alt="Group leaderboard"
-        fitShell
-        shadow="soft"
-      />
-    ),
-  },
-  {
-    key: "profile",
-    label: "Profile",
-    node: (
-      <ImagePhone
-        src="/progress-mockup1-removebg-preview.png"
-        alt="Player profile and stats"
-        fitShell
-        shadow="soft"
-      />
-    ),
-  },
-  {
-    key: "achievements",
-    label: "Achievements",
-    node: (
-      <ImagePhone
-        src="/social-mockup-removebg-preview.png"
-        alt="Achievements and milestones"
-        fitShell
-        shadow="soft"
-      />
-    ),
-  },
-];
+import { screenshotRail } from "@/lib/mockups";
 
 export default function ScreenshotsRailSection() {
   const railRef = useRef<HTMLDivElement>(null);
@@ -172,17 +110,17 @@ export default function ScreenshotsRailSection() {
             scrollPaddingRight: "1rem",
           }}
         >
-          {shots.map((s) => (
+          {screenshotRail.map((shot) => (
             <m.div
-              key={s.key}
+              key={shot.key}
               variants={fadeUpSoftVariants}
               className="w-[min(82vw,300px)] shrink-0 snap-start sm:w-[300px] lg:w-[320px]"
             >
               <p className="mb-3 text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                {s.label}
+                {shot.label}
               </p>
               <div className="flex w-full items-center justify-center pb-2">
-                {s.node}
+                <ImagePhone src={shot.src} alt={shot.alt} fitShell shadow="soft" />
               </div>
             </m.div>
           ))}

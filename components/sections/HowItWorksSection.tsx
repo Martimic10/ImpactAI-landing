@@ -1,47 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { m, AnimatePresence } from "framer-motion";
+import { ImagePhone } from "@/components/landing/ImagePhone";
 import { cn } from "@/lib/utils";
+import { howItWorksTabs } from "@/lib/mockups";
 import {
   cascadeVariants,
   defaultViewport,
   fadeUpVariants,
 } from "@/components/motion/scroll-motion";
 
-const tabs = [
-  {
-    id: "crew",
-    label: "Create Crew",
-    description:
-      "Invite your regular foursome and set up your golf group in minutes.",
-    mockup: "/social-mockup-removebg-preview.png",
-    alt: "Create your golf group",
-  },
-  {
-    id: "round",
-    label: "Live Round",
-    description:
-      "Track scores live during the round — every hole updates in real time.",
-    mockup: "/results-mockup1-removebg-preview.png",
-    alt: "Live score tracking during a round",
-  },
-  {
-    id: "compete",
-    label: "Compete",
-    description:
-      "See standings, achievements, and challenge winners when the round ends.",
-    mockup: "/friends-mockup-removebg-preview.png",
-    alt: "Group leaderboard and standings",
-  },
-] as const;
-
-type TabId = (typeof tabs)[number]["id"];
+type TabId = (typeof howItWorksTabs)[number]["id"];
 
 export default function HowItWorksSection() {
-  const [active, setActive] = useState<TabId>(tabs[0].id);
-  const activeTab = tabs.find((t) => t.id === active) ?? tabs[0];
+  const [active, setActive] = useState<TabId>(howItWorksTabs[0].id);
+  const activeTab = howItWorksTabs.find((t) => t.id === active) ?? howItWorksTabs[0];
 
   return (
     <section id="how-it-works" className="section-pad bg-background">
@@ -66,7 +40,7 @@ export default function HowItWorksSection() {
                 role="tablist"
                 aria-label="How Impact Golf works"
               >
-                {tabs.map((tab) => {
+                {howItWorksTabs.map((tab) => {
                   const isActive = active === tab.id;
                   return (
                     <button
@@ -78,10 +52,10 @@ export default function HowItWorksSection() {
                       id={`how-it-works-tab-${tab.id}`}
                       onClick={() => setActive(tab.id)}
                       className={cn(
-                        "rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-200 sm:px-6",
+                        "rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-200 sm:px-6 sm:py-3",
                         isActive
-                          ? "bg-card text-foreground shadow-sm"
-                          : "text-background/65 hover:text-background"
+                          ? "bg-brand text-primary-foreground shadow-sm"
+                          : "text-white/70 hover:text-white"
                       )}
                     >
                       {tab.label}
@@ -91,7 +65,7 @@ export default function HowItWorksSection() {
               </div>
             </div>
 
-            <div className="mt-6 min-h-[3.5rem] px-4 text-center sm:mt-8">
+            <div className="mt-8 text-center sm:mt-10">
               <AnimatePresence mode="wait">
                 <m.p
                   key={activeTab.id}
@@ -110,28 +84,23 @@ export default function HowItWorksSection() {
             </div>
 
             <div className="relative mx-auto mt-10 w-full max-w-[min(72vw,280px)] sm:mt-12 sm:max-w-[300px] lg:max-w-[320px]">
-              <div className="relative aspect-[290/572] w-full">
-                <AnimatePresence mode="wait">
-                  <m.div
-                    key={activeTab.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={activeTab.mockup}
-                      alt={activeTab.alt}
-                      fill
-                      sizes="(max-width: 640px) 72vw, 320px"
-                      className="select-none object-contain object-center mix-blend-multiply drop-shadow-[0_20px_44px_rgba(0,0,0,0.14)]"
-                      priority={activeTab.id === tabs[0].id}
-                      draggable={false}
-                    />
-                  </m.div>
-                </AnimatePresence>
-              </div>
+              <AnimatePresence mode="wait">
+                <m.div
+                  key={activeTab.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ImagePhone
+                    bare
+                    src={activeTab.src}
+                    alt={activeTab.alt}
+                    priority={activeTab.id === howItWorksTabs[0].id}
+                    sizes="(max-width: 640px) 72vw, 320px"
+                  />
+                </m.div>
+              </AnimatePresence>
             </div>
           </m.div>
         </m.div>
