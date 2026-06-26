@@ -3,7 +3,7 @@ import { BRAND_LOGO_SRC } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 export { BRAND_LOGO_SRC };
-export const BRAND_LOGO_ALT = "Impact Golf";
+export const BRAND_LOGO_ALT = "TeeUp";
 
 type BrandLogoProps = {
   /** Navbar: compact square lockup. Footer: slightly larger. */
@@ -18,7 +18,7 @@ const variantClass = {
 } as const;
 
 /**
- * Impact Golf logo styled like an iOS home-screen app icon (squircle + depth + gloss).
+ * TeeUp logo styled like an iOS home-screen app icon (squircle + depth + gloss).
  */
 export function BrandLogo({
   variant = "nav",

@@ -32,7 +32,7 @@ export function ChatMockup({ className }: { className?: string }) {
         <p className="text-[10px] font-semibold uppercase tracking-widest text-brand">
           AI Coach
         </p>
-        <p className="text-xs font-semibold text-white sm:text-sm">ImpactAI</p>
+        <p className="text-xs font-semibold text-white sm:text-sm">TeeUp</p>
       </div>
       <div className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-2.5 pt-3 sm:px-3 sm:pt-4">
         {messages.map((m, i) => (

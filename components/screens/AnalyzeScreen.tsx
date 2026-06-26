@@ -4,7 +4,7 @@ export default function AnalyzeScreen() {
       {/* Header */}
       <div className="px-4 pt-2 pb-3">
         <p className="text-[#66BB6A] text-[9px] font-semibold uppercase tracking-widest">
-          ImpactAI
+          TeeUp
         </p>
         <h3 className="text-white text-sm font-bold mt-0.5">Analyze Swing</h3>
       </div>

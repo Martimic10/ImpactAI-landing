@@ -16,8 +16,8 @@ import {
 
 const faqs = [
   {
-    q: "What is Impact Golf?",
-    a: "Impact Golf is a social golf competition app. Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard every week.",
+    q: "What is TeeUp?",
+    a: "TeeUp is a social golf competition app. Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard every week.",
   },
   {
     q: "Can I compete with friends?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Is the app available on iOS?",
-    a: "Impact Golf is launching on iOS first. Tap Download for iPhone to get it when it's live on the App Store.",
+    a: "TeeUp is launching on iOS first. Tap Download for iPhone to get it when it's live on the App Store.",
   },
   {
     q: "How do challenges work?",

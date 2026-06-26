@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import { HeroBackground } from "@/components/landing/HeroBackground";
 
@@ -55,7 +54,7 @@ export default function Footer() {
 
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom,0px))] text-sm text-white/85 sm:flex-row sm:justify-between sm:gap-4 sm:px-6 sm:py-10 lg:px-8">
           <p className="order-2 text-center sm:order-1 sm:text-left">
-            © {new Date().getFullYear()} Impact Golf. All rights reserved.
+            © {new Date().getFullYear()} TeeUp. All rights reserved.
           </p>
 
           <nav
@@ -74,13 +73,6 @@ export default function Footer() {
           </nav>
 
           <div className="order-3 flex flex-col items-center gap-3 sm:items-end">
-            <a
-              href="mailto:hello@impactai.golf"
-              className="inline-flex items-center gap-2 transition hover:text-white"
-            >
-              <Mail className="size-4 shrink-0" strokeWidth={1.75} aria-hidden />
-              <span>hello@impactai.golf</span>
-            </a>
             <div className="flex items-center gap-2">
               {socials.map((s) => (
                 <a

@@ -58,7 +58,7 @@ export default function Navbar() {
         <Link
           href="/"
           className="relative z-10 flex min-w-0 items-center transition hover:opacity-90"
-          aria-label="Impact Golf home"
+          aria-label="TeeUp home"
         >
           <BrandLogo variant="nav" priority />
         </Link>

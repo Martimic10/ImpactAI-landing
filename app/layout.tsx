@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Impact Golf — Compete With Your Golf Crew",
+  title: "TeeUp — Compete With Your Golf Crew",
   description:
     "The social golf competition app. Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
   keywords: [
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     "golf scoring",
   ],
   openGraph: {
-    title: "Impact Golf — Compete With Your Golf Crew",
+    title: "TeeUp — Compete With Your Golf Crew",
     description:
       "Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
     type: "website",
-    siteName: "Impact Golf",
+    siteName: "TeeUp",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Impact Golf — Compete With Your Golf Crew",
+    title: "TeeUp — Compete With Your Golf Crew",
     description:
       "Create rounds with friends, track scores live, complete challenges, and climb your group leaderboard.",
   },

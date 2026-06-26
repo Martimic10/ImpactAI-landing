@@ -9,9 +9,9 @@ import {
 } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Impact Golf",
+  title: "Terms of Service — TeeUp",
   description:
-    "Read the Terms of Service for Impact Golf, the social golf competition app for friends, groups, and leaderboards.",
+    "Read the Terms of Service for TeeUp, the social golf competition app for friends, groups, and leaderboards.",
   robots: { index: true, follow: true },
 };
 
@@ -22,7 +22,7 @@ export default function TermsPage() {
         <p>
           These Terms of Service (&quot;Terms&quot;) govern your access to and use of the {COMPANY_NAME}{" "}
           mobile application, website, and related services (collectively, the &quot;Services&quot;)
-          operated by {COMPANY_NAME} (&quot;Impact Golf,&quot; &quot;we,&quot; &quot;us,&quot; or
+          operated by {COMPANY_NAME} (&quot;TeeUp,&quot; &quot;we,&quot; &quot;us,&quot; or
           &quot;our&quot;).
         </p>
         <p>
@@ -58,7 +58,7 @@ export default function TermsPage() {
 
       <LegalSection title="Use of the Services">
         <p>
-          Impact Golf is a social golf competition platform. You may use the Services to create or
+          TeeUp is a social golf competition platform. You may use the Services to create or
           join groups, track rounds and scores, participate in challenges, view leaderboards, and
           interact with other golfers as intended by the app.
         </p>
@@ -78,7 +78,7 @@ export default function TermsPage() {
         <p>
           You may submit content through the Services, including profile information, scores, group
           activity, and other competition-related data (&quot;User Content&quot;). You retain
-          ownership of your User Content, but you grant Impact Golf a worldwide, non-exclusive,
+          ownership of your User Content, but you grant TeeUp a worldwide, non-exclusive,
           royalty-free license to host, store, reproduce, display, and distribute your User Content
           solely as needed to operate, improve, and promote the Services.
         </p>
@@ -92,7 +92,7 @@ export default function TermsPage() {
       <LegalSection title="Groups, Friends, and Social Features">
         <p>
           The Services may allow you to invite friends, join groups, and participate in shared
-          competitions. You are responsible for your interactions with other users. Impact Golf does
+          competitions. You are responsible for your interactions with other users. TeeUp does
           not control user conduct and is not responsible for disputes between users, though we
           may remove content or restrict access when we believe it violates these Terms.
         </p>
@@ -131,7 +131,7 @@ export default function TermsPage() {
           THE SERVICES WILL BE ERROR-FREE, SECURE, OR UNINTERRUPTED.
         </p>
         <p>
-          Golf involves physical activity and personal judgment. Impact Golf does not provide
+          Golf involves physical activity and personal judgment. TeeUp does not provide
           professional instruction, medical advice, or course safety guidance. You are responsible
           for your own conduct on and off the course.
         </p>
@@ -154,7 +154,7 @@ export default function TermsPage() {
 
       <LegalSection title="Indemnification">
         <p>
-          You agree to indemnify and hold harmless Impact Golf from any claims, damages, losses,
+          You agree to indemnify and hold harmless TeeUp from any claims, damages, losses,
           and expenses (including reasonable attorneys&apos; fees) arising from your use of the
           Services, your User Content, or your violation of these Terms or applicable law.
         </p>

@@ -44,7 +44,7 @@ export default function WhyImpactSection() {
           variants={cascadeVariants(0.1, 0.04)}
         >
           <m.div variants={fadeUpVariants} className="mx-auto min-w-0 max-w-2xl px-1 text-center sm:px-0">
-            <p className="section-label mb-3">Why ImpactAI</p>
+            <p className="section-label mb-3">Why TeeUp</p>
             <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Everything you need to improve your game.
             </h2>

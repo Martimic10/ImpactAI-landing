@@ -78,7 +78,7 @@ export default function BenefitsSection() {
             variants={fadeUpVariants}
             className="text-2xl font-semibold tracking-tight text-white sm:text-4xl"
           >
-            Discover Impact Golf&apos;s benefits
+            Discover TeeUp&apos;s benefits
           </m.h2>
           <m.p
             variants={fadeUpSoftVariants}
@@ -100,7 +100,7 @@ export default function BenefitsSection() {
             <ImagePhone
               fitShell
               src="/social-mockup-removebg-preview.png"
-              alt="Impact Golf social feed"
+              alt="TeeUp social feed"
               sizes="(max-width: 640px) min(88vw, 260px), 320px"
               className="shadow-[0_32px_80px_-24px_rgba(0,0,0,0.75)]"
             />
@@ -122,7 +122,7 @@ export default function BenefitsSection() {
               <ImagePhone
                 fitShell
                 src="/social-mockup-removebg-preview.png"
-                alt="Impact Golf social feed"
+                alt="TeeUp social feed"
                 sizes="320px"
                 className="shadow-[0_32px_80px_-24px_rgba(0,0,0,0.75)]"
               />

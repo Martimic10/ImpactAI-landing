@@ -45,7 +45,7 @@ export default function HeroSection() {
             <ImagePhone
               bare
               src={deviceMockups.home}
-              alt="Impact Golf home screen with live rounds and stats"
+              alt="TeeUp home screen with live rounds and stats"
               priority
               sizes="(max-width: 640px) 72vw, 320px"
               className="relative z-10"

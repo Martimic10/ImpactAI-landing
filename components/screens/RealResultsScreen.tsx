@@ -5,7 +5,7 @@ export default function RealResultsScreen() {
     <div className="relative w-full h-full bg-[#111111]">
       <Image
         src="/Results-screen.png"
-        alt="ImpactAI results screen"
+        alt="TeeUp results screen"
         fill
         className="object-fill"
         priority

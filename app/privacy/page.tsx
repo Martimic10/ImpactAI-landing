@@ -8,9 +8,9 @@ import {
 } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Impact Golf",
+  title: "Privacy Policy — TeeUp",
   description:
-    "Learn how Impact Golf collects, uses, and protects your information when you use our social golf competition app.",
+    "Learn how TeeUp collects, uses, and protects your information when you use our social golf competition app.",
   robots: { index: true, follow: true },
 };
 
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
     <LegalPageLayout title="Privacy Policy" lastUpdated={LEGAL_LAST_UPDATED}>
       <LegalSection title="Introduction">
         <p>
-          {COMPANY_NAME} (&quot;Impact Golf,&quot; &quot;we,&quot; &quot;us,&quot; or
+          {COMPANY_NAME} (&quot;TeeUp,&quot; &quot;we,&quot; &quot;us,&quot; or
           &quot;our&quot;) operates a mobile application and related services that help golfers
           play rounds with friends, track scores, complete challenges, and compete on
           leaderboards. This Privacy Policy explains how we collect, use, disclose, and safeguard
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
           <li>
             <strong className="text-foreground">For legal reasons:</strong> we may disclose
             information if required by law, regulation, legal process, or governmental request, or
-            to protect the rights, property, or safety of Impact Golf, our users, or others.
+            to protect the rights, property, or safety of TeeUp, our users, or others.
           </li>
           <li>
             <strong className="text-foreground">Business transfers:</strong> if we are involved in

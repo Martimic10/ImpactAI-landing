@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
               <div
                 className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-full bg-foreground p-1.5 shadow-lg sm:flex-nowrap sm:gap-0"
                 role="tablist"
-                aria-label="How Impact Golf works"
+                aria-label="How TeeUp works"
               >
                 {howItWorksTabs.map((tab) => {
                   const isActive = active === tab.id;

@@ -5,7 +5,7 @@ export default function RealCompareScreen() {
     <div className="relative w-full h-full bg-[#111111]">
       <Image
         src="/Compare-screen.png"
-        alt="ImpactAI compare screen"
+        alt="TeeUp compare screen"
         fill
         className="object-fill"
         priority
