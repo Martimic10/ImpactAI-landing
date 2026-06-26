@@ -25,10 +25,10 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 flex w-full max-w-md flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-            <AppStoreButtons size="lg" />
+            <AppStoreButtons size="lg" className="w-full sm:w-auto" />
             <Link
               href="#features"
-              className="btn-outline min-h-12 border-foreground/10 bg-card/90 px-8 py-3.5 text-base shadow-sm backdrop-blur-sm"
+              className="btn-outline min-h-12 w-full border-foreground/10 bg-card/90 px-8 py-3.5 text-base shadow-sm backdrop-blur-sm sm:w-auto"
             >
               View Features
             </Link>

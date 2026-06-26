@@ -52,7 +52,7 @@ export default function HowItWorksSection() {
                       id={`how-it-works-tab-${tab.id}`}
                       onClick={() => setActive(tab.id)}
                       className={cn(
-                        "rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-200 sm:px-6 sm:py-3",
+                        "rounded-full px-3 py-2 text-xs font-semibold transition-all duration-200 sm:px-6 sm:py-3 sm:text-sm",
                         isActive
                           ? "bg-brand text-primary-foreground shadow-sm"
                           : "text-white/70 hover:text-white"

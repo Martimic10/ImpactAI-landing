@@ -42,7 +42,7 @@ export default function GroupsSection() {
             </p>
           </m.div>
 
-          <div className="mt-12 grid gap-5 sm:mt-16 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             <m.div
               variants={fadeUpSoftVariants}
               className="card-lift rounded-3xl border border-border bg-card p-6"
@@ -112,7 +112,7 @@ export default function GroupsSection() {
 
             <m.div
               variants={fadeUpSoftVariants}
-              className="card-lift rounded-3xl border border-border bg-card p-6"
+              className="card-lift rounded-3xl border border-border bg-card p-6 sm:col-span-2 lg:col-span-1"
             >
               <div className="flex items-center gap-2">
                 <Activity className="size-4 text-brand" />

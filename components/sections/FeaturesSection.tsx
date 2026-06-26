@@ -138,7 +138,7 @@ export default function FeaturesSection() {
             </h2>
           </m.div>
 
-          <div className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+          <div className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {features.map((feature) => (
               <FeatureCard key={feature.title} feature={feature} />
             ))}
