@@ -13,10 +13,6 @@ function SectionFallback() {
   );
 }
 
-const SocialProofSection = dynamic(
-  () => import("@/components/sections/SocialProofSection"),
-  { loading: () => <SectionFallback /> }
-);
 const HowItWorksSection = dynamic(
   () => import("@/components/sections/HowItWorksSection"),
   { loading: () => <SectionFallback /> }
@@ -48,7 +44,6 @@ export default function Home() {
       <Navbar />
       <main className="min-h-0 min-w-0 flex-1 overflow-x-clip bg-background text-foreground">
         <HeroSection />
-        <SocialProofSection />
         <HowItWorksSection />
         <FeaturesSection />
         <GroupsSection />
